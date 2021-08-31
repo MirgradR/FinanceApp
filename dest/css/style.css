@@ -1,0 +1,146 @@
+/* Resetting styles */
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: inline-block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  -ms-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+.header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 10px 15px;
+  background-color: #c0e5ee;
+  max-width: 100%;
+}
+
+.header .content-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+.header .content-group .btn-setting {
+  background-color: transparent;
+}
+
+.header .content-group .btn-setting img {
+  -webkit-transition: -webkit-transform 0.5s ease;
+  transition: -webkit-transform 0.5s ease;
+  -o-transition: transform 0.5s ease;
+  transition: transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+}
+
+.header .content-group .btn-setting img:hover {
+  -webkit-transform: rotate(45deg) scale(1.1);
+  -ms-transform: rotate(45deg) scale(1.1);
+  transform: rotate(45deg) scale(1.1);
+}
+
+.header .content-group .date-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: start;
+  align-self: start;
+  margin-left: 30px;
+}
+
+.header .content-group .date-group > * {
+  margin-right: 10px;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.header .content-group .date-group > *:last-child {
+  margin-right: 0;
+}
+
+.header .content-group .currency-rate {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  position: absolute;
+  top: 25px;
+  left: 65px;
+  width: 150px;
+}
+
+.header .content-group .currency-rate > * {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.header .logo-group {
+  text-align: center;
+  cursor: pointer;
+}
+
+.header .logo-group:hover * {
+  text-shadow: 2px 3px 3px rgba(156, 133, 4, 0.808);
+}
+
+.header .logo-group .logo-group__name {
+  font-size: 32px;
+  color: #1a6602;
+}
+
+.header .logo-group .logo-group__title {
+  font-weight: 500;
+  color: #5f5102;
+}

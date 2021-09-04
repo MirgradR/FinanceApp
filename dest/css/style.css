@@ -54,7 +54,7 @@ ul li {
 
 .wrapper {
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 .header {
@@ -180,7 +180,7 @@ ul li {
 
 .main .main__container .menu-finance .menu-finance__list > * {
   padding: 15px 15px;
-  color: rgba(207, 250, 250, 0.795);
+  color: rgba(207, 250, 250, 0.829);
   font-size: 18px;
   cursor: pointer;
   -webkit-transition: all 0.3s ease;
@@ -189,10 +189,67 @@ ul li {
 }
 
 .main .main__container .menu-finance .menu-finance__list > *:hover {
-  background-color: rgba(211, 223, 220, 0.267);
+  background-color: rgba(222, 238, 234, 0.342);
+}
+
+.main .main__container .menu-finance .menu-finance__list > *.active-item {
+  background-color: rgba(222, 238, 234, 0.342);
 }
 
 .main .main__container .content-finance {
   max-width: 100%;
   padding-left: 180px;
+}
+
+.widget {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  min-height: 700px;
+}
+
+.widget .widget-body {
+  background-color: rgba(240, 248, 255, 0.808);
+  width: 100%;
+  margin: 30px;
+  margin-bottom: 0;
+  padding: 30px;
+  border-radius: 20px;
+  min-height: 700px;
+}
+
+.widget .widget-body .widget-title {
+  font-size: 32px;
+  color: #1c5f56;
+  line-height: 1.1;
+  margin-bottom: 50px;
+}
+
+.widget .widget-body .widget-title span {
+  color: #40657e;
+}
+
+.widget .widget-body .widget-text {
+  font-size: 26px;
+}
+
+.main-widget,
+.myPortfolio-widget,
+.currencyRate-widget,
+.stockPrice-widget,
+.incomeCalculator-widget,
+.economicNews-widget {
+  display: none;
+}
+
+.main-widget.active-widget,
+.myPortfolio-widget.active-widget,
+.currencyRate-widget.active-widget,
+.stockPrice-widget.active-widget,
+.incomeCalculator-widget.active-widget,
+.economicNews-widget.active-widget {
+  display: block;
 }

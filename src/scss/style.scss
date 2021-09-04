@@ -3,7 +3,7 @@
 
 .wrapper {
     width: 100%;
-    height: 100%;
+    height: auto;
 }
 .header {
     position: fixed;
@@ -77,7 +77,6 @@
     background-size: cover;
     .main__container {
         padding-top: 68px;
-        //height: 100%;
         .menu-finance {
             display: flex;
             flex-direction: column;
@@ -88,20 +87,65 @@
             .menu-finance__list {
                 &>* {
                     padding: 15px 15px;
-                    color: rgba(207, 250, 250, 0.795);
+                    color: rgba(207, 250, 250, 0.829);
                     font-size: 18px;
                     cursor: pointer;
                     transition: all 0.3s ease;
                     &:hover {
-                        background-color: rgba(211, 223, 220, 0.267);
+                        background-color: rgba(222, 238, 234, 0.342);
+                    }
+                    &.active-item {
+                        background-color: rgba(222, 238, 234, 0.342);
                     }
                 }
             }
         }
         .content-finance {
             max-width: 100%;
-            //height: 100%;
             padding-left: 180px;
         }
+    }
+}
+
+// General style for Widget
+
+.widget {
+    display: flex;
+    justify-content: center;
+    min-height: 700px;
+    .widget-body {
+        background-color: rgba(240, 248, 255, 0.808);
+        width: 100%;
+        margin: 30px;
+        margin-bottom: 0;
+        padding: 30px;
+        border-radius: 20px;
+        min-height: 700px;
+        .widget-title {
+            font-size: 32px;
+            color: rgb(28, 95, 86);
+            line-height: 1.1;
+            span {
+                color: rgb(64, 101, 126);
+            }
+            margin-bottom: 50px;
+        }
+        .widget-text {
+            font-size: 26px;
+        }
+    }
+}
+
+//Main Widget style
+
+.main-widget, 
+.myPortfolio-widget, 
+.currencyRate-widget,
+.stockPrice-widget,
+.incomeCalculator-widget,
+.economicNews-widget {
+    display: none;
+    &.active-widget {
+        display: block;
     }
 }

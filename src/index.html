@@ -31,16 +31,25 @@
                 <div class="main__container">
                     <div class="menu-finance main__menu">
                         <ul class="menu-finance__list">
-                            <li class="menu-finance__item">Main</li>
-                            <li class="menu-finance__item">My portfolio</li>
-                            <li class="menu-finance__item">Currency rate</li>
-                            <li class="menu-finance__item">Stock price</li>
-                            <li class="menu-finance__item">Income calculator</li>
-                            <li class="menu-finance__item">Economic news</li>
+                            <li class="menu-finance__item" id="main-widget">Main</li>
+                            <li class="menu-finance__item" id="myPortfolio-widget">My portfolio</li>
+                            <li class="menu-finance__item" id="currencyRate-widget">Currency rate</li>
+                            <li class="menu-finance__item" id="stockPrice-widget">Stock price</li>
+                            <li class="menu-finance__item" id="incomeCalculator-widget">Income calculator</li>
+                            <li class="menu-finance__item" id="economicNews-widget">Economic news</li>
                         </ul>
                     </div>
                     <div class="content-finance main__content">
-
+                        <div class="widget">
+                            <div class="widget-body">
+                                @@include('_mainWidget.html')
+                                @@include('_myPortfolioWidget.html')
+                                @@include('_currencyRateWidget.html')
+                                @@include('_stockPriceWidget.html')
+                                @@include('_incomeCalculatorWidget.html')
+                                @@include('_economicNewsWidget.html')
+                            </div>
+                        </div> 
                     </div>
                 </div>
             </main>

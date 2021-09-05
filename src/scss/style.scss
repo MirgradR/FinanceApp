@@ -17,6 +17,7 @@
         position: relative;
         padding-right: 25px;
         .btn-setting {
+            margin-right: 16px;
             background-color: transparent;
             img {
                 transition: transform 0.5s ease;
@@ -25,31 +26,31 @@
                 }
             }
         }
-        .date-group {
+        .content-group__content {
             display: flex;
-            align-self: start;
-            margin-left: 30px;
-            &>* {
-                margin-right: 10px;
-                font-weight: 400;
-                font-size: 14px;
+            flex-direction: column;
+            align-items: flex-end;
+            .date-group {
+                display: flex;
+                margin-bottom: 18px;
+                &>* {
+                    margin-right: 10px;
+                    font-weight: 400;
+                    font-size: 14px;
+                }
+                &>*:last-child {
+                    margin-right: 0;
+                }
             }
-            &>*:last-child {
+            .currency-rate {
+                display: flex;
+                justify-content: space-between;
                 margin-right: 0;
-            }
-        }
-        .currency-rate {
-            display: flex;
-            justify-content: space-between;
-            position: absolute;
-            top: 25px;
-            left: 65px;
-            width: 150px;
-            
-            & >* {
-               font-weight: 400;
-               font-size: 14px; 
-               
+                width: 150px;
+                & >* {
+                   font-weight: 400;
+                   font-size: 14px;  
+                }
             }
         }
     }
@@ -106,7 +107,18 @@
         }
     }
 }
-
+@media (max-width: 1400px) {
+    .main {
+        .main__container {
+            .menu-finance {
+                display: none;
+            }
+            .content-finance {
+                padding-left: 0;
+            }
+        }
+    }
+}
 // General style for Widget
 
 .widget {
@@ -146,7 +158,22 @@
         display: block;
     }
 }
-
+@media (max-width: 500px) {
+    .widget {
+        .widget-body {
+            margin: 15px;
+            padding: 15px;
+        }
+    }
+}
+@media (max-width: 860px) {
+    .widget {
+        .widget-body {
+            margin: 15px;
+            padding: 15px;
+        }
+    }
+}
 // Stock price
 
 .widget_price-list {
@@ -162,35 +189,69 @@
        display: flex;
        justify-content: space-between;
        cursor: pointer; 
+       transition: background-color, filter 0.3s, 0.31s ease;
        &:hover {
            background-color: rgba(46, 44, 44, 0.315);
+           & img {
+                filter: invert(30%);
+           }
        }
        .widget_price-info {
            display: flex;
            img {
                margin-right: 20px;
-               width: 70px;
-               height: 70px;
+               width: 60px;
+               height: 60px;
                border-radius: 50%;
            }
            .widget_price-description {
                 .widget_price-title {
                    margin-bottom: 10px;
-                   font-size: 18px;
+                   font-size: 16px;
                 }
                 .widget_price-inductry {
-                    font-size: 18px;
-                    width: 180px;
+                    font-size: 14px;
+                    max-width: 180px;
                 }
             }
        }
        .widget_price-price {
-            font-size: 18px;
+            font-size: 16px;
         }
     }
 }
 @media (max-width: 1200px) {
     .widget_price-list {
         grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (max-width: 620px) {
+    .widget_price-list {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+@media (max-width: 860px) {
+    .widget_price-list {
+        gap: 10px;
+        .widget_price-card {
+            .widget_price-info {
+                img {
+                    width: 50px;
+                    height: 50px; 
+                }
+                .widget_price-description {
+                    max-width: 110px;
+                     .widget_price-title {
+                        font-size: 14px;
+                     }
+                     .widget_price-inductry {
+                         font-size: 12px;
+                     }
+                 }
+            }
+            .widget_price-price {
+                font-size: 14px;
+            }
+        }       
     }
 }

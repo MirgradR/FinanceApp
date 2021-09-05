@@ -1,8 +1,8 @@
 // Stocks
 
 const API_KEY = 'c4q8am2ad3icc97rdfcg';
-let symbols = ['FB', 'AAPL', 'MS', 'AMZN', 'JPM', 'GOOGL', 'JNJ', 'XOM', 'BAC', 'V', 'T', 'INTC', 'PFE', 'BA', 'KO', 'BABA', 'TSLA', 'NFLX', 'WMT', 'NKE', 'EA', 'MSFT']
-
+//let symbols = ['FB', 'AAPL', 'MS', 'AMZN', 'JPM', 'GOOGL', 'JNJ', 'XOM', 'BAC', 'V', 'T', 'INTC', 'PFE', 'BA', 'KO', 'BABA', 'TSLA', 'NFLX', 'WMT', 'NKE', 'EA', 'MSFT']
+let symbols = ['FB', 'AAPL', 'MS', 'AMZN']
 const getPrice = (ticker) => {
     const url_price = `https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${API_KEY}`
     return url_price
@@ -22,11 +22,14 @@ const getData = (url1, url2) => {
         console.log(data)
     })
 }
-for (let i = 0; i < symbols.length; i++) {
-    getData(getPrice(symbols[i]), getCompany(symbols[i]))
-}
-//getData(getPrice(symbols[9]), getCompany(symbols[9]))
 
+const updateGetData = () => {
+    for (let i = 0; i < symbols.length; i++) {
+        getData(getPrice(symbols[i]), getCompany(symbols[i]))
+    } 
+}
+
+updateGetData()
 
 const createElem = (tagName, className, text) => {
     const elem = document.createElement(tagName);
@@ -106,3 +109,32 @@ const changeWidget = () => {
     }
 }
 changeWidget()
+
+const setTime = () => {
+    const getHours = document.querySelector('.date-group__time')
+    const fullData = document.querySelector('.date-group__date')
+    const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturdat']
+    const dayOfWeek = document.querySelector('.date-group__day')
+    let date = new Date()
+    dayOfWeek.textContent = week[date.getDay()]
+    let minutesHeader = date.getMinutes()
+    let hoursHeader = date.getHours()
+    let dayHeader = date.getDate()
+    let monthHeader = date.getMonth()
+    let yearHeader = date.getFullYear()
+    if (minutesHeader < 10) {
+        minutesHeader = '0' + minutesHeader
+    }
+    if (hoursHeader < 10) {
+        hoursHeader = '0' + hoursHeader
+    }
+    if (dayHeader < 10) {
+        dayHeader = '0' + dayHeader
+    }
+    if (monthHeader < 10) {
+        monthHeader = '0' + monthHeader
+    }
+    getHours.textContent = hoursHeader + ':' + minutesHeader; 
+    fullData.textContent = dayHeader + '.' + monthHeader + '.' + yearHeader
+}
+setTime ()

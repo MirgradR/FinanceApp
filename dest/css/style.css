@@ -79,6 +79,7 @@ ul li {
 }
 
 .header .content-group .btn-setting {
+  margin-right: 16px;
   background-color: transparent;
 }
 
@@ -96,39 +97,48 @@ ul li {
   transform: rotate(45deg) scale(1.1);
 }
 
-.header .content-group .date-group {
+.header .content-group .content-group__content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-item-align: start;
-  align-self: start;
-  margin-left: 30px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
 }
 
-.header .content-group .date-group > * {
+.header .content-group .content-group__content .date-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 18px;
+}
+
+.header .content-group .content-group__content .date-group > * {
   margin-right: 10px;
   font-weight: 400;
   font-size: 14px;
 }
 
-.header .content-group .date-group > *:last-child {
+.header .content-group .content-group__content .date-group > *:last-child {
   margin-right: 0;
 }
 
-.header .content-group .currency-rate {
+.header .content-group .content-group__content .currency-rate {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  position: absolute;
-  top: 25px;
-  left: 65px;
+  margin-right: 0;
   width: 150px;
 }
 
-.header .content-group .currency-rate > * {
+.header .content-group .content-group__content .currency-rate > * {
   font-weight: 400;
   font-size: 14px;
 }
@@ -274,10 +284,20 @@ ul li {
   -ms-flex-pack: justify;
   justify-content: space-between;
   cursor: pointer;
+  -webkit-transition: background-color, 0.31s ease, -webkit-filter 0.3s;
+  transition: background-color, 0.31s ease, -webkit-filter 0.3s;
+  -o-transition: background-color, filter 0.3s, 0.31s ease;
+  transition: background-color, filter 0.3s, 0.31s ease;
+  transition: background-color, filter 0.3s, 0.31s ease, -webkit-filter 0.3s;
 }
 
 .widget_price-list .widget_price-card:hover {
   background-color: rgba(46, 44, 44, 0.315);
+}
+
+.widget_price-list .widget_price-card:hover img {
+  -webkit-filter: invert(30%);
+  filter: invert(30%);
 }
 
 .widget_price-list .widget_price-card .widget_price-info {
@@ -288,27 +308,82 @@ ul li {
 
 .widget_price-list .widget_price-card .widget_price-info img {
   margin-right: 20px;
-  width: 70px;
-  height: 70px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
 }
 
 .widget_price-list .widget_price-card .widget_price-info .widget_price-description .widget_price-title {
   margin-bottom: 10px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .widget_price-list .widget_price-card .widget_price-info .widget_price-description .widget_price-inductry {
-  font-size: 18px;
-  width: 180px;
+  font-size: 14px;
+  max-width: 180px;
 }
 
 .widget_price-list .widget_price-card .widget_price-price {
-  font-size: 18px;
+  font-size: 16px;
+}
+
+@media (max-width: 1400px) {
+  .main .main__container .menu-finance {
+    display: none;
+  }
+
+  .main .main__container .content-finance {
+    padding-left: 0;
+  }
 }
 
 @media (max-width: 1200px) {
   .widget_price-list {
     grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .widget .widget-body {
+    margin: 15px;
+    padding: 15px;
+  }
+
+  .widget_price-list {
+    gap: 10px;
+  }
+
+  .widget_price-list .widget_price-card .widget_price-info img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .widget_price-list .widget_price-card .widget_price-info .widget_price-description {
+    max-width: 110px;
+  }
+
+  .widget_price-list .widget_price-card .widget_price-info .widget_price-description .widget_price-title {
+    font-size: 14px;
+  }
+
+  .widget_price-list .widget_price-card .widget_price-info .widget_price-description .widget_price-inductry {
+    font-size: 12px;
+  }
+
+  .widget_price-list .widget_price-card .widget_price-price {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 620px) {
+  .widget_price-list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .widget .widget-body {
+    margin: 15px;
+    padding: 15px;
   }
 }

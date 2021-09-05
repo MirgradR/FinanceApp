@@ -42,3 +42,32 @@ const changeWidget = () => {
     }
 }
 changeWidget()
+
+const setTime = () => {
+    const getHours = document.querySelector('.date-group__time')
+    const fullData = document.querySelector('.date-group__date')
+    const week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturdat']
+    const dayOfWeek = document.querySelector('.date-group__day')
+    let date = new Date()
+    dayOfWeek.textContent = week[date.getDay()]
+    let minutesHeader = date.getMinutes()
+    let hoursHeader = date.getHours()
+    let dayHeader = date.getDate()
+    let monthHeader = date.getMonth()
+    let yearHeader = date.getFullYear()
+    if (minutesHeader < 10) {
+        minutesHeader = '0' + minutesHeader
+    }
+    if (hoursHeader < 10) {
+        hoursHeader = '0' + hoursHeader
+    }
+    if (dayHeader < 10) {
+        dayHeader = '0' + dayHeader
+    }
+    if (monthHeader < 10) {
+        monthHeader = '0' + monthHeader
+    }
+    getHours.textContent = hoursHeader + ':' + minutesHeader; 
+    fullData.textContent = dayHeader + '.' + monthHeader + '.' + yearHeader
+}
+setTime ()

@@ -225,7 +225,7 @@ ul li {
   font-size: 32px;
   color: #1c5f56;
   line-height: 1.1;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .widget .widget-body .widget-title span {
@@ -252,4 +252,63 @@ ul li {
 .incomeCalculator-widget.active-widget,
 .economicNews-widget.active-widget {
   display: block;
+}
+
+.widget_price-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.widget_price-list > * {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.911);
+  border-radius: 10px;
+}
+
+.widget_price-list .widget_price-card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.widget_price-list .widget_price-card:hover {
+  background-color: rgba(46, 44, 44, 0.315);
+}
+
+.widget_price-list .widget_price-card .widget_price-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.widget_price-list .widget_price-card .widget_price-info img {
+  margin-right: 20px;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+}
+
+.widget_price-list .widget_price-card .widget_price-info .widget_price-description .widget_price-title {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.widget_price-list .widget_price-card .widget_price-info .widget_price-description .widget_price-inductry {
+  font-size: 18px;
+  width: 180px;
+}
+
+.widget_price-list .widget_price-card .widget_price-price {
+  font-size: 18px;
+}
+
+@media (max-width: 1200px) {
+  .widget_price-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

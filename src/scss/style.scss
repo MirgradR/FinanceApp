@@ -128,16 +128,13 @@
             span {
                 color: rgb(64, 101, 126);
             }
-            margin-bottom: 50px;
+            margin-bottom: 30px;
         }
         .widget-text {
             font-size: 26px;
         }
     }
 }
-
-//Main Widget style
-
 .main-widget, 
 .myPortfolio-widget, 
 .currencyRate-widget,
@@ -147,5 +144,53 @@
     display: none;
     &.active-widget {
         display: block;
+    }
+}
+
+// Stock price
+
+.widget_price-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    &>* {
+        padding: 15px;
+        background-color: rgba(255, 255, 255, 0.911);
+        border-radius: 10px;  
+    }
+    .widget_price-card {
+       display: flex;
+       justify-content: space-between;
+       cursor: pointer; 
+       &:hover {
+           background-color: rgba(46, 44, 44, 0.315);
+       }
+       .widget_price-info {
+           display: flex;
+           img {
+               margin-right: 20px;
+               width: 70px;
+               height: 70px;
+               border-radius: 50%;
+           }
+           .widget_price-description {
+                .widget_price-title {
+                   margin-bottom: 10px;
+                   font-size: 18px;
+                }
+                .widget_price-inductry {
+                    font-size: 18px;
+                    width: 180px;
+                }
+            }
+       }
+       .widget_price-price {
+            font-size: 18px;
+        }
+    }
+}
+@media (max-width: 1200px) {
+    .widget_price-list {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

@@ -1,3 +1,5 @@
+@@include('currencyRate.js');
+
 const widgetBody = document.querySelector('.widget-body')
 const widgetList = document.querySelectorAll('.menu-finance__item')
 let currentWidget;

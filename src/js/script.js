@@ -53,7 +53,7 @@ const setTime = () => {
     let minutesHeader = date.getMinutes()
     let hoursHeader = date.getHours()
     let dayHeader = date.getDate()
-    let monthHeader = date.getMonth()
+    let monthHeader = date.getMonth() + 1
     let yearHeader = date.getFullYear()
     if (minutesHeader < 10) {
         minutesHeader = '0' + minutesHeader
@@ -71,3 +71,12 @@ const setTime = () => {
     fullData.textContent = dayHeader + '.' + monthHeader + '.' + yearHeader
 }
 setTime ()
+setInterval(setTime, 60000)
+
+// Menu active
+
+const btnOpenMenu = document.querySelector('.btn-menu-open');
+const menuFinance = document.querySelector('.menu-finance');
+btnOpenMenu.addEventListener('click', function() {
+    btnOpenMenu.classList.toggle('active-menu')
+})

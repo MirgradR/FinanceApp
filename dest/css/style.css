@@ -68,6 +68,7 @@ ul li {
   padding: 10px 15px;
   background-color: #c0e5ee;
   width: 100%;
+  z-index: 10;
 }
 
 .header .content-group {
@@ -170,6 +171,32 @@ ul li {
   background-size: cover;
 }
 
+.main .btn-menu-open {
+  display: none;
+  background-color: rgba(192, 229, 238, 0.726);
+  padding: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: fixed;
+  left: 10px;
+  top: 75px;
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  z-index: 10;
+}
+
+.main .btn-menu-open:hover {
+  background-color: rgba(129, 219, 241, 0.726);
+}
+
+.main .btn-menu-open.active-menu {
+  -webkit-transform: translate(180px) rotate(90deg);
+  -ms-transform: translate(180px) rotate(90deg);
+  transform: translate(180px) rotate(90deg);
+}
+
 .main .main__container {
   padding-top: 68px;
 }
@@ -186,6 +213,7 @@ ul li {
   height: 100%;
   position: fixed;
   background-color: #0e8f73;
+  z-index: 10;
 }
 
 .main .main__container .menu-finance .menu-finance__list > * {
@@ -311,6 +339,7 @@ ul li {
   width: 60px;
   height: 60px;
   border-radius: 50%;
+  z-index: 5;
 }
 
 .widget_price-list .widget_price-card .widget_price-info .widget_price-description .widget_price-title {
@@ -328,12 +357,33 @@ ul li {
 }
 
 @media (max-width: 1400px) {
+  .main .main__container {
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+
   .main .main__container .menu-finance {
-    display: none;
+    -webkit-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-transform: translate(-180px);
+    -ms-transform: translate(-180px);
+    transform: translate(-180px);
   }
 
   .main .main__container .content-finance {
     padding-left: 0;
+  }
+
+  .main .btn-menu-open {
+    display: block;
+  }
+
+  .main .btn-menu-open.active-menu + .main__container .menu-finance {
+    -webkit-transform: translate(0);
+    -ms-transform: translate(0);
+    transform: translate(0);
   }
 }
 

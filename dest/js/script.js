@@ -1,8 +1,10 @@
 // Stocks
 
 const API_KEY = 'c4q8am2ad3icc97rdfcg';
-//let symbols = ['FB', 'AAPL', 'MS', 'AMZN', 'JPM', 'GOOGL', 'JNJ', 'XOM', 'BAC', 'V', 'T', 'INTC', 'PFE', 'BA', 'KO', 'BABA', 'TSLA', 'NFLX', 'WMT', 'NKE', 'EA', 'MSFT']
-let symbols = ['FB', 'AAPL', 'MS', 'AMZN']
+let symbols = ['FB', 'AAPL', 'MS', 'AMZN', 'JPM', 'GOOGL', 'JNJ', 'XOM', 'BAC', 'V', 'T', 'INTC', 'PFE', 'BA', 'KO', 'BABA', 'TSLA', 'NFLX', 'WMT', 'NKE', 'EA', 'MSFT']
+//let symbols = ['FB', 'AAPL', 'MS', 'AMZN']
+let stocksArr = [];
+
 const getPrice = (ticker) => {
     const url_price = `https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${API_KEY}`
     return url_price
@@ -18,8 +20,9 @@ const getData = (url1, url2) => {
         fetch(url2).then(resp => resp.json()),  
     ])
     .then(data => {
+        createObject(data, symbols)
         createStocks(data)
-        console.log(data)
+        //console.log(data[1])
     })
 }
 
@@ -28,7 +31,6 @@ const updateGetData = () => {
         getData(getPrice(symbols[i]), getCompany(symbols[i]))
     } 
 }
-
 updateGetData()
 
 const createElem = (tagName, className, text) => {
@@ -39,6 +41,19 @@ const createElem = (tagName, className, text) => {
     }
     return elem
 }
+
+const createObject = (data, ticker) => {
+    let stockObj = {}
+    stockObj.name = data[1].name
+    stockObj.logo = data[1].logo
+    stockObj.industry = data[1].finnhubIndustry
+    stockObj.count = 1
+    stockObj.price = data[0].c * stockObj.count
+    stockObj.inPortfolio = 'false'
+    stocksArr.push(stockObj)
+}
+
+console.log(stocksArr)
 
 const createStocks = (data) => {
     const stockPriceWidget = document.querySelector('.stockPrice-widget')
@@ -65,7 +80,8 @@ const createStocks = (data) => {
     
     const cardPrice = createElem('p', 'widget_price-price', data[0].c + ' $');
     card.append(cardPrice)
-};
+}
+;
 
 const widgetBody = document.querySelector('.widget-body')
 const widgetList = document.querySelectorAll('.menu-finance__item')
@@ -120,7 +136,7 @@ const setTime = () => {
     let minutesHeader = date.getMinutes()
     let hoursHeader = date.getHours()
     let dayHeader = date.getDate()
-    let monthHeader = date.getMonth()
+    let monthHeader = date.getMonth() + 1
     let yearHeader = date.getFullYear()
     if (minutesHeader < 10) {
         minutesHeader = '0' + minutesHeader
@@ -138,3 +154,12 @@ const setTime = () => {
     fullData.textContent = dayHeader + '.' + monthHeader + '.' + yearHeader
 }
 setTime ()
+setInterval(setTime, 60000)
+
+// Menu active
+
+const btnOpenMenu = document.querySelector('.btn-menu-open');
+const menuFinance = document.querySelector('.menu-finance');
+btnOpenMenu.addEventListener('click', function() {
+    btnOpenMenu.classList.toggle('active-menu')
+})

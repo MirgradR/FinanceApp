@@ -91,8 +91,10 @@
                 }
                 .stock-info {
                     font-size: 16px;
+                    margin-right: 10px;
                     .stock-info__name {
                         margin-bottom: 10px;
+
                     }
                 }
                 .stock-number {
@@ -100,6 +102,7 @@
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
+                    align-items: flex-end;
                     .stock-number__amount {
                         align-self: end;
                         margin-bottom: 20px;
@@ -216,6 +219,8 @@
         .profile-user {
             //grid-template-columns: 1fr;
             .profile-user__balance {
+                padding-left: 10px;
+                padding-right: 10px;
                 .user-balance__title {
                     font-size: 22px;
                 }
@@ -262,6 +267,7 @@
             .profile-user__balance {
                 display: flex;
                 justify-content: center;
+                width: 90%;
                 .user-balance__title {
                     font-size: 22px;
                     margin-right: 15px;
@@ -421,15 +427,14 @@
         }
         .profile-user {
             .profile-user__balance {
-                //flex-direction: column;
                 text-align: left;
-                width: 80%;
+                width: 90%;
                 .user-balance__title {
-                    font-size: 13px;
+                    font-size: 16px;
                     margin-right: 5px;
                 }
                 .user-balance__count {
-                    font-size: 13px;
+                    font-size: 16px;
                     &:first-of-type {
                         margin-right: 10px;  
                       }
@@ -462,15 +467,15 @@
             .list-content__items {
                 .content-items__stock {
                     .stock-info {
-                        font-size: 10px;
+                        font-size: 12px;
                     }
                     .stock-number {
                         .stock-number__price {
-                            font-size: 12px;
+                            font-size: 14px;
                         }
                         .stock-number__count {
                             button, .stock-count, .btn-sell{
-                                font-size: 10px;
+                                font-size: 14px;
                             }
                         }
                     }

@@ -180,6 +180,7 @@ ul li {
 
 .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-info {
   font-size: 16px;
+  margin-right: 10px;
 }
 
 .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-info .stock-info__name {
@@ -198,6 +199,9 @@ ul li {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
 }
 
 .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__amount {
@@ -698,6 +702,11 @@ ul li {
 }
 
 @media (max-width: 800px) {
+  .myPortfolio-widget .profile-user .profile-user__balance {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
   .myPortfolio-widget .profile-user .profile-user__balance .user-balance__title {
     font-size: 22px;
   }
@@ -751,6 +760,7 @@ ul li {
     -webkit-box-pack: center;
     -ms-flex-pack: center;
     justify-content: center;
+    width: 90%;
   }
 
   .myPortfolio-widget .profile-user .profile-user__balance .user-balance__title {
@@ -923,16 +933,16 @@ ul li {
 
   .myPortfolio-widget .profile-user .profile-user__balance {
     text-align: left;
-    width: 80%;
+    width: 90%;
   }
 
   .myPortfolio-widget .profile-user .profile-user__balance .user-balance__title {
-    font-size: 13px;
+    font-size: 16px;
     margin-right: 5px;
   }
 
   .myPortfolio-widget .profile-user .profile-user__balance .user-balance__count {
-    font-size: 13px;
+    font-size: 16px;
   }
 
   .myPortfolio-widget .profile-user .profile-user__balance .user-balance__count:first-of-type {
@@ -963,17 +973,17 @@ ul li {
   }
 
   .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-info {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__price {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count button,
   .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .stock-count,
   .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .btn-sell {
-    font-size: 10px;
+    font-size: 14px;
   }
 
   .header .content-group .content-group__content .date-group > * {

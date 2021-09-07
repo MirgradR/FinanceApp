@@ -1,10 +1,11 @@
 @import 'resetting';
-
+@import 'myPortfolio';
 
 .wrapper {
     width: 100%;
     height: auto;
 }
+
 .header {
     position: fixed;
     display: flex;
@@ -216,26 +217,24 @@
         border-radius: 10px;  
     }
     .widget_price-card {
-       display: flex;
-       justify-content: space-between;
-       cursor: pointer; 
-       transition: background-color, filter 0.3s, 0.31s ease;
-       &:hover {
-           background-color: rgba(46, 44, 44, 0.315);
-           & img {
-                filter: invert(30%);
-           }
-       }
-       .widget_price-info {
-           display: flex;
-           img {
-               margin-right: 20px;
-               width: 60px;
-               height: 60px;
-               border-radius: 50%;
-               z-index: 5;
-           }
-           .widget_price-description {
+        display: flex;
+        justify-content: space-between;
+        cursor: pointer; 
+        position: relative;
+        transition: background-color, filter 0.3s, 0.31s ease;
+        &:hover {
+            background-color: rgba(126, 125, 125, 0.089);
+        }
+        .widget_price-info {
+            display: flex;
+            img {
+                margin-right: 20px;
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                z-index: 5;
+            }
+            .widget_price-description {
                 .widget_price-title {
                    margin-bottom: 10px;
                    font-size: 16px;
@@ -244,9 +243,21 @@
                     font-size: 14px;
                     max-width: 180px;
                 }
+                .widget_price-btn {
+                    margin-top: 10px;
+                    padding: 5px;
+                    font-size: 12px;
+                    border-radius: 10px;
+                    background-color: rgb(75, 231, 210);
+                    &:hover {
+                        background-color: rgb(86, 201, 185);
+                        color: #fff;
+                        transform: scale(1.03);
+                    }
+                }
             }
-       }
-       .widget_price-price {
+        }
+        .widget_price-price {
             font-size: 16px;
         }
     }
@@ -284,5 +295,24 @@
                 font-size: 14px;
             }
         }       
+    }
+}
+@media (max-width: 440px) {
+    .header {
+        .content-group {
+            .content-group__content {
+                .date-group {
+                    &>* {
+                      font-size: 12px;  
+                    }
+                }
+                .currency-rate {
+                    width: 135px;
+                    &>* {
+                        font-size: 12px;  
+                    } 
+                }
+            }
+        }
     }
 }

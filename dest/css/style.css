@@ -52,6 +52,209 @@ ul li {
   list-style: none;
 }
 
+.myPortfolio-widget .profile-user {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+}
+
+.myPortfolio-widget .profile-user .profile-user__card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 470px;
+  height: 250px;
+  background: #2b7056 url("../img/dollarIC.png") no-repeat;
+  background-position: center;
+  padding: 25px;
+  border-radius: 20px;
+  color: rgba(223, 223, 23, 0.87);
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.myPortfolio-widget .profile-user .profile-user__card:hover {
+  background-color: #1f533e;
+  -webkit-transform: scale(1.01);
+  -ms-transform: scale(1.01);
+  transform: scale(1.01);
+}
+
+.myPortfolio-widget .profile-user .profile-user__card:hover > * {
+  text-shadow: 2px 3px 3px rgba(156, 133, 4, 0.808);
+}
+
+.myPortfolio-widget .profile-user .profile-user__card .user-card__name {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.myPortfolio-widget .profile-user .profile-user__card .user-card__number {
+  font-size: 36px;
+  font-weight: 500;
+  word-spacing: 20px;
+  letter-spacing: 5px;
+}
+
+.myPortfolio-widget .profile-user .profile-user__card .user-card__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.myPortfolio-widget .profile-user .profile-user__card .user-card__info .card-info__owner {
+  margin-right: 80px;
+}
+
+.myPortfolio-widget .profile-user .profile-user__card .info-owner__title {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.myPortfolio-widget .profile-user .profile-user__card .info-owner__data {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.myPortfolio-widget .profile-user .profile-user__balance {
+  text-align: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 25px;
+}
+
+.myPortfolio-widget .profile-user .profile-user__balance .user-balance__title {
+  font-size: 32px;
+  color: #186937;
+  margin-bottom: 15px;
+}
+
+.myPortfolio-widget .profile-user .profile-user__balance .user-balance__count {
+  font-size: 36px;
+  margin-bottom: 15px;
+}
+
+.myPortfolio-widget .assets-list {
+  background-color: #fff;
+  margin-top: 50px;
+  padding: 25px;
+  border-radius: 20px;
+}
+
+.myPortfolio-widget .assets-list .list-content__title {
+  font-size: 36px;
+  color: #186937;
+  margin-bottom: 30px;
+}
+
+.myPortfolio-widget .assets-list .list-content__items {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.myPortfolio-widget .assets-list .list-content__items .content-items__stock {
+  border: 1px solid rgba(0, 0, 0, 0.582);
+  border-radius: 10px;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-img {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+}
+
+.myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-info {
+  font-size: 16px;
+}
+
+.myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-info .stock-info__name {
+  margin-bottom: 10px;
+}
+
+.myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number {
+  margin-left: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__amount {
+  -ms-flex-item-align: end;
+  align-self: end;
+  margin-bottom: 20px;
+}
+
+.myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__price {
+  font-size: 20px;
+}
+
+.myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__price:first-child {
+  margin-bottom: 10px;
+}
+
+.myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+}
+
+.myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count button {
+  background-color: rgba(180, 180, 179, 0.767);
+  font-size: 20px;
+  padding: 2px 5px;
+  border: 1px solid #000;
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count button:hover {
+  background-color: rgba(105, 105, 103, 0.767);
+}
+
+.myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .stock-count {
+  background-color: rgba(180, 180, 179, 0.767);
+  font-size: 20px;
+  padding: 2px 5px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+.myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .btn-sell {
+  color: #140101;
+  background-color: rgba(238, 27, 27, 0.897);
+  margin-right: 10px;
+}
+
+.myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .btn-sell:hover {
+  background-color: rgba(175, 23, 23, 0.897);
+}
+
 .wrapper {
   width: 100%;
   height: auto;
@@ -312,6 +515,7 @@ ul li {
   -ms-flex-pack: justify;
   justify-content: space-between;
   cursor: pointer;
+  position: relative;
   -webkit-transition: background-color, 0.31s ease, -webkit-filter 0.3s;
   transition: background-color, 0.31s ease, -webkit-filter 0.3s;
   -o-transition: background-color, filter 0.3s, 0.31s ease;
@@ -320,12 +524,7 @@ ul li {
 }
 
 .widget_price-list .widget_price-card:hover {
-  background-color: rgba(46, 44, 44, 0.315);
-}
-
-.widget_price-list .widget_price-card:hover img {
-  -webkit-filter: invert(30%);
-  filter: invert(30%);
+  background-color: rgba(126, 125, 125, 0.089);
 }
 
 .widget_price-list .widget_price-card .widget_price-info {
@@ -350,6 +549,22 @@ ul li {
 .widget_price-list .widget_price-card .widget_price-info .widget_price-description .widget_price-inductry {
   font-size: 14px;
   max-width: 180px;
+}
+
+.widget_price-list .widget_price-card .widget_price-info .widget_price-description .widget_price-btn {
+  margin-top: 10px;
+  padding: 5px;
+  font-size: 12px;
+  border-radius: 10px;
+  background-color: #4be7d2;
+}
+
+.widget_price-list .widget_price-card .widget_price-info .widget_price-description .widget_price-btn:hover {
+  background-color: #56c9b9;
+  color: #fff;
+  -webkit-transform: scale(1.03);
+  -ms-transform: scale(1.03);
+  transform: scale(1.03);
 }
 
 .widget_price-list .widget_price-card .widget_price-price {
@@ -393,6 +608,63 @@ ul li {
   }
 }
 
+@media (max-width: 1000px) {
+  .myPortfolio-widget .profile-user .profile-user__balance .user-balance__title {
+    font-size: 26px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__balance .user-balance__count {
+    font-size: 30px;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-info {
+    font-size: 14px;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__price {
+    font-size: 16px;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count button,
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .stock-count,
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .btn-sell {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 900px) {
+  .myPortfolio-widget .profile-user .profile-user__balance .user-balance__title {
+    font-size: 24px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__balance .user-balance__count {
+    font-size: 28px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__card {
+    width: 400px;
+    height: 220px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__card .user-card__name {
+    font-size: 22px;
+    font-weight: 400;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__card .user-card__number {
+    font-size: 30px;
+    letter-spacing: 4px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__card .info-owner__title {
+    font-size: 14px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__card .info-owner__data {
+    font-size: 16px;
+  }
+}
+
 @media (max-width: 860px) {
   .widget .widget-body {
     margin: 15px;
@@ -425,15 +697,294 @@ ul li {
   }
 }
 
+@media (max-width: 800px) {
+  .myPortfolio-widget .profile-user .profile-user__balance .user-balance__title {
+    font-size: 22px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__balance .user-balance__count {
+    font-size: 26px;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items {
+    grid-template-columns: 1fr;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock {
+    border: none;
+    border-radius: 0;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-info {
+    font-size: 18px;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__price {
+    font-size: 20px;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count button,
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .stock-count,
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .btn-sell {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 700px) {
+  .myPortfolio-widget .profile-user {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    justify-items: center;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__card {
+    -ms-flex-item-align: center;
+    align-self: center;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__balance {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__balance .user-balance__title {
+    font-size: 22px;
+    margin-right: 15px;
+    margin-bottom: 0;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__balance .user-balance__count {
+    font-size: 22px;
+    margin-bottom: 0;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__balance .user-balance__count:first-of-type {
+    margin-right: 30px;
+  }
+
+  .myPortfolio-widget .assets-list {
+    margin-top: 30px;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items {
+    grid-template-columns: 1fr;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock {
+    border: none;
+    border-radius: 0;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-info {
+    font-size: 18px;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__price {
+    font-size: 20px;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count button,
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .stock-count,
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .btn-sell {
+    font-size: 18px;
+  }
+}
+
 @media (max-width: 620px) {
   .widget_price-list {
     grid-template-columns: repeat(1, 1fr);
   }
 }
 
+@media (max-width: 600px) {
+  .myPortfolio-widget .myPortfolio-widget__title.widget-title {
+    font-size: 28px;
+  }
+
+  .myPortfolio-widget .profile-user {
+    justify-items: center;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__balance {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__balance .user-balance__title {
+    font-size: 20px;
+    margin-right: 15px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__balance .user-balance__count {
+    font-size: 22px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__balance .user-balance__count:first-of-type {
+    margin-right: 30px;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__title {
+    font-size: 28px;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-info {
+    font-size: 16px;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__price {
+    font-size: 18px;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count button,
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .stock-count,
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .btn-sell {
+    font-size: 16px;
+  }
+}
+
 @media (max-width: 500px) {
+  .myPortfolio-widget .profile-user .profile-user__balance .user-balance__title {
+    font-size: 18px;
+    margin-right: 10px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__balance .user-balance__count {
+    font-size: 18px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__balance .user-balance__count:first-of-type {
+    margin-right: 15px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__card {
+    width: 300px;
+    height: 160px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__card .user-card__name {
+    font-size: 16px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__card .user-card__number {
+    font-size: 22px;
+    letter-spacing: 3px;
+    word-spacing: 14px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__card .info-owner__title {
+    font-size: 12px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__card .info-owner__data {
+    font-size: 13px;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-info {
+    font-size: 14px;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__price {
+    font-size: 16px;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count button,
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .stock-count,
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .btn-sell {
+    font-size: 14px;
+  }
+
   .widget .widget-body {
     margin: 15px;
     padding: 15px;
+  }
+}
+
+@media (max-width: 440px) {
+  .myPortfolio-widget .myPortfolio-widget__title.widget-title {
+    font-size: 26px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__balance {
+    text-align: left;
+    width: 80%;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__balance .user-balance__title {
+    font-size: 13px;
+    margin-right: 5px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__balance .user-balance__count {
+    font-size: 13px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__balance .user-balance__count:first-of-type {
+    margin-right: 10px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__card {
+    width: 240px;
+    height: 135px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__card .user-card__name {
+    font-size: 12px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__card .user-card__number {
+    font-size: 20px;
+    letter-spacing: 2px;
+    word-spacing: 8px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__card .info-owner__title {
+    font-size: 10px;
+  }
+
+  .myPortfolio-widget .profile-user .profile-user__card .info-owner__data {
+    font-size: 11px;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-info {
+    font-size: 10px;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__price {
+    font-size: 12px;
+  }
+
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count button,
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .stock-count,
+  .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .btn-sell {
+    font-size: 10px;
+  }
+
+  .header .content-group .content-group__content .date-group > * {
+    font-size: 12px;
+  }
+
+  .header .content-group .content-group__content .currency-rate {
+    width: 135px;
+  }
+
+  .header .content-group .content-group__content .currency-rate > * {
+    font-size: 12px;
   }
 }

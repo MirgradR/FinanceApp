@@ -1,0 +1,481 @@
+.myPortfolio-widget {
+    .profile-user {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        .profile-user__card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 470px;
+            height: 250px;
+            background: rgb(43, 112, 86) url('../img/dollarIC.png') no-repeat; 
+            background-position: center;
+            padding: 25px;
+            border-radius: 20px;
+            color: rgba(223, 223, 23, 0.87);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            &:hover {
+                background-color: rgb(31, 83, 62);
+                transform: scale(1.01);
+                & > * {
+                    text-shadow: 2px 3px 3px rgba(156, 133, 4, 0.808)
+                }
+            }
+            .user-card__name {
+                font-size: 24px;
+                font-weight: 500;
+            }
+            .user-card__number {
+                font-size: 36px;
+                font-weight: 500;
+                word-spacing: 20px;
+                letter-spacing: 5px;
+            }
+            .user-card__info {
+                display: flex;
+                .card-info__owner {
+                    margin-right: 80px;
+                }
+            }
+            .info-owner__title {
+                font-size: 16px;
+                font-weight: 400;
+                margin-bottom: 10px;
+            }
+            .info-owner__data {
+                font-size: 18px;
+                font-weight: 400;
+            }
+        }
+        .profile-user__balance {
+            text-align: center;
+            background-color: rgb(255, 255, 255);
+            border-radius: 20px;
+            padding: 25px;
+            .user-balance__title {
+                font-size: 32px;
+                color: rgb(24, 105, 55);
+                margin-bottom: 15px;
+            }
+            .user-balance__count {
+                font-size: 36px;
+                margin-bottom: 15px;
+            }
+        }
+    }
+    .assets-list {
+        background-color: #fff;
+        margin-top: 50px;
+        padding: 25px;
+        border-radius: 20px;
+        .list-content__title {
+            font-size: 36px;
+            color: rgb(24, 105, 55);
+            margin-bottom: 30px;
+        }
+        .list-content__items {
+            display: grid;
+            gap: 10px;
+            grid-template-columns: repeat(2, 1fr);
+            .content-items__stock {
+                border: 1px solid rgba(0, 0, 0, 0.582); 
+                border-radius: 10px;
+                padding: 10px;
+                display: flex;
+                .stock-img {
+                    width: 50px;
+                    height: 50px;
+                    margin-right: 20px;
+                }
+                .stock-info {
+                    font-size: 16px;
+                    .stock-info__name {
+                        margin-bottom: 10px;
+                    }
+                }
+                .stock-number {
+                    margin-left: auto;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    .stock-number__amount {
+                        align-self: end;
+                        margin-bottom: 20px;
+                    }
+                    .stock-number__price {
+                        &:first-child {
+                           margin-bottom: 10px; 
+                        }
+                        font-size: 20px;
+                    }
+                    .stock-number__count {
+                        display: flex;
+                        background-color: transparent;
+                        border: none;
+                        border-radius: 5px;
+                        button {
+                            background-color: rgba(180, 180, 179, 0.767);
+                            font-size: 20px;
+                            padding: 2px 5px;
+                            border: 1px solid #000;
+                            transition: all 0.2s ease;
+                            &:hover {
+                                background-color: rgba(105, 105, 103, 0.767);
+                            }
+                        }
+                        .stock-count {
+                            background-color: rgba(180, 180, 179, 0.767);
+                            font-size: 20px;
+                            padding: 2px 5px;
+                            border-top: 1px solid #000;
+                            border-bottom: 1px solid #000;
+                        }
+                        .btn-sell {
+                            color: rgb(20, 1, 1);
+                            background-color: rgba(238, 27, 27, 0.897);
+                            margin-right: 10px;
+                            &:hover {
+                                background-color: rgba(175, 23, 23, 0.897);
+                            }
+                        }
+                    }
+                }
+            }   
+        }
+    }
+}
+@media (max-width: 1000px) {
+    .myPortfolio-widget {
+        .profile-user {
+            .profile-user__balance {
+                .user-balance__title {
+                    font-size: 26px;
+                }
+                .user-balance__count {
+                    font-size: 30px;
+                }
+            }
+        }
+        .assets-list { 
+            .list-content__items {
+                .content-items__stock {
+                    .stock-info {
+                        font-size: 14px;
+                    }
+                    .stock-number {
+                        .stock-number__price {
+                            font-size: 16px;
+                        }
+                        .stock-number__count {
+                            button, .stock-count, .btn-sell {
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 900px) {
+    .myPortfolio-widget {
+        .profile-user {
+            .profile-user__balance {
+                .user-balance__title {
+                    font-size: 24px;
+                }
+                .user-balance__count {
+                    font-size: 28px;
+                }
+            }
+            .profile-user__card {
+                width: 400px;
+                height: 220px;
+                .user-card__name {
+                    font-size: 22px;
+                    font-weight: 400;
+                }
+                .user-card__number {
+                    font-size: 30px;
+                    letter-spacing: 4px;
+                }
+                .info-owner__title {
+                    font-size: 14px;
+                }
+                .info-owner__data {
+                    font-size: 16px;
+                }
+            }
+        }  
+    }
+}
+@media (max-width: 800px) {
+    .myPortfolio-widget {
+        .profile-user {
+            //grid-template-columns: 1fr;
+            .profile-user__balance {
+                .user-balance__title {
+                    font-size: 22px;
+                }
+                .user-balance__count {
+                    font-size: 26px;
+                }
+            }
+        }
+        .assets-list { 
+            .list-content__items {
+                grid-template-columns: 1fr;
+                .content-items__stock {
+                    border: none;
+                    border-radius: 0;
+                    border-top: 1px solid #000;
+                    border-bottom: 1px solid #000;
+                    .stock-info {
+                        font-size: 18px;
+                    }
+                    .stock-number {
+                        .stock-number__price {
+                            font-size: 20px;
+                        }
+                        .stock-number__count {
+                            button, .stock-count, .btn-sell{
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 700px) {
+    .myPortfolio-widget {
+        .profile-user {
+            grid-template-columns: 1fr;
+            gap: 30px;
+            justify-items: center;
+            .profile-user__card {
+                align-self: center;
+            }
+            .profile-user__balance {
+                display: flex;
+                justify-content: center;
+                .user-balance__title {
+                    font-size: 22px;
+                    margin-right: 15px;
+                    margin-bottom: 0;
+                }
+                .user-balance__count {
+                    font-size: 22px;
+                    margin-bottom: 0; 
+                    &:first-of-type {
+                      margin-right: 30px; 
+                      
+                    }
+                }
+            }
+        }
+        .assets-list { 
+            margin-top: 30px;
+            .list-content__items {
+                grid-template-columns: 1fr;
+                .content-items__stock {
+                    border: none;
+                    border-radius: 0;
+                    border-top: 1px solid #000;
+                    border-bottom: 1px solid #000;
+                    .stock-info {
+                        font-size: 18px;
+                    }
+                    .stock-number {
+                        .stock-number__price {
+                            font-size: 20px;
+                        }
+                        .stock-number__count {
+                            button, .stock-count, .btn-sell{
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 600px) {
+    .myPortfolio-widget {
+        .myPortfolio-widget__title.widget-title {
+            font-size: 28px;
+        }
+        .profile-user {
+            justify-items: center;
+            .profile-user__balance {
+                display: flex;
+                justify-content: center;
+                .user-balance__title {
+                    font-size: 20px;
+                    margin-right: 15px;
+                }
+                .user-balance__count {
+                    font-size: 22px;
+                    &:first-of-type {
+                      margin-right: 30px;  
+                    }
+                }
+            }
+        }
+        .assets-list { 
+            .list-content__title {
+                font-size: 28px;
+            }
+            .list-content__items {
+                .content-items__stock {
+                    .stock-img {
+                        width: 40px;
+                        height: 40px;
+                    }
+                    .stock-info {
+                        font-size: 16px;
+                    }
+                    .stock-number {
+                        .stock-number__price {
+                            font-size: 18px;
+                        }
+                        .stock-number__count {
+                            button, .stock-count, .btn-sell{
+                                font-size: 16px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media (max-width: 500px) {
+    .myPortfolio-widget {
+        .profile-user {
+            .profile-user__balance {
+                .user-balance__title {
+                    font-size: 18px;
+                    margin-right: 10px;
+                }
+                .user-balance__count {
+                    font-size: 18px;
+                    &:first-of-type {
+                        margin-right: 15px;  
+                      }
+                }
+            }
+            .profile-user__card {
+                width: 300px;
+                height: 160px;
+                .user-card__name {
+                    font-size: 16px;
+                }
+                .user-card__number {
+                    font-size: 22px;
+                    letter-spacing: 3px;
+                    word-spacing: 14px;
+                }
+                .info-owner__title {
+                    font-size: 12px;
+                }
+                .info-owner__data {
+                    font-size: 13px;
+                }
+            }
+        }  
+    }
+}
+@media (max-width: 500px) {
+    .myPortfolio-widget {
+        .assets-list { 
+            .list-content__items {
+                .content-items__stock {
+                    .stock-info {
+                        font-size: 14px;
+                    }
+                    .stock-number {
+                        .stock-number__price {
+                            font-size: 16px;
+                        }
+                        .stock-number__count {
+                            button, .stock-count, .btn-sell{
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+//
+@media (max-width: 440px) {
+    .myPortfolio-widget {
+        .myPortfolio-widget__title.widget-title {
+            font-size: 26px;
+        }
+        .profile-user {
+            .profile-user__balance {
+                //flex-direction: column;
+                text-align: left;
+                width: 80%;
+                .user-balance__title {
+                    font-size: 13px;
+                    margin-right: 5px;
+                }
+                .user-balance__count {
+                    font-size: 13px;
+                    &:first-of-type {
+                        margin-right: 10px;  
+                      }
+                }
+            }
+            .profile-user__card {
+                width: 240px;
+                height: 135px;
+                .user-card__name {
+                    font-size: 12px;
+                }
+                .user-card__number {
+                    font-size: 20px;
+                    letter-spacing: 2px;
+                    word-spacing: 8px;
+                }
+                .info-owner__title {
+                    font-size: 10px;
+                }
+                .info-owner__data {
+                    font-size: 11px;
+                }
+            }
+        }  
+    }
+}
+@media (max-width: 440px) {
+    .myPortfolio-widget {
+        .assets-list { 
+            .list-content__items {
+                .content-items__stock {
+                    .stock-info {
+                        font-size: 10px;
+                    }
+                    .stock-number {
+                        .stock-number__price {
+                            font-size: 12px;
+                        }
+                        .stock-number__count {
+                            button, .stock-count, .btn-sell{
+                                font-size: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

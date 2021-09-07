@@ -22,6 +22,7 @@ const getData = (url1, url2) => {
     .then(data => {
         createObject(data, symbols)
         createStocks(data)
+
         //console.log(data[1])
     })
 }
@@ -53,7 +54,15 @@ const createObject = (data, ticker) => {
     stocksArr.push(stockObj)
 }
 
-console.log(stocksArr)
+//console.log(stocksArr)
+
+// const titleP = document.querySelector('.myPortfolio-widget__title')
+// const fun = () => {
+//     stocksArr.forEach( stoc => {
+//         titleP.innerHTML = stoc.price
+//     }) 
+// }
+// fun()
 
 const createStocks = (data) => {
     const stockPriceWidget = document.querySelector('.stockPrice-widget')
@@ -80,6 +89,9 @@ const createStocks = (data) => {
     
     const cardPrice = createElem('p', 'widget_price-price', data[0].c + ' $');
     card.append(cardPrice)
+
+    const btnAdd = createElem('button', 'widget_price-btn', 'Add to portfolio');
+    cardDivDiscript.append(btnAdd)
 }
 ;
 

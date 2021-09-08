@@ -94,7 +94,6 @@
                     margin-right: 10px;
                     .stock-info__name {
                         margin-bottom: 10px;
-
                     }
                 }
                 .stock-number {
@@ -105,6 +104,7 @@
                     align-items: flex-end;
                     .stock-number__amount {
                         align-self: end;
+                        margin-left: auto;
                         margin-bottom: 20px;
                     }
                     .stock-number__price {

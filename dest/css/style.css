@@ -207,6 +207,7 @@ ul li {
 .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__amount {
   -ms-flex-item-align: end;
   align-self: end;
+  margin-left: auto;
   margin-bottom: 20px;
 }
 

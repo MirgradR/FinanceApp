@@ -1,7 +1,7 @@
 // Stocks
 
 const API_KEY = 'c4q8am2ad3icc97rdfcg';
-let symbols = ['FB', 'AAPL', 'MS', 'AMZN', 'JPM', 'GOOGL', 'JNJ', 'XOM', 'BAC', 'V', 'T', 'INTC', 'PFE', 'BA', 'KO', 'BABA', 'TSLA', 'NFLX', 'WMT', 'NKE', 'EA', 'MSFT']
+let symbols = ['FB', 'AAPL', 'MS', 'JPM', 'JNJ', 'XOM', 'BAC', 'V', 'T', 'INTC', 'PFE', 'BA', 'KO', 'BABA', 'TSLA', 'NFLX', 'WMT', 'NKE', 'EA', 'MSFT']
 //let symbols = ['FB', 'AAPL', 'MS', 'AMZN']
 let stocksArr = [];
 
@@ -21,15 +21,14 @@ const getData = (url1, url2) => {
     ])
     .then(data => {
         createObject(data, symbols)
-        createStocks(data)
-
-        //console.log(data[1])
+        localStorage.setItem('stocks', JSON.stringify(stocksArr))
     })
 }
 
 const updateGetData = () => {
     for (let i = 0; i < symbols.length; i++) {
         getData(getPrice(symbols[i]), getCompany(symbols[i]))
+        
     } 
 }
 updateGetData()
@@ -49,22 +48,12 @@ const createObject = (data, ticker) => {
     stockObj.logo = data[1].logo
     stockObj.industry = data[1].finnhubIndustry
     stockObj.count = 1
-    stockObj.price = data[0].c * stockObj.count
+    stockObj.price = (Math.floor(data[0].c * 100) / 100) * stockObj.count
     stockObj.inPortfolio = 'false'
     stocksArr.push(stockObj)
 }
 
-//console.log(stocksArr)
-
-// const titleP = document.querySelector('.myPortfolio-widget__title')
-// const fun = () => {
-//     stocksArr.forEach( stoc => {
-//         titleP.innerHTML = stoc.price
-//     }) 
-// }
-// fun()
-
-const createStocks = (data) => {
+const createStocks = (arr) => {
     const stockPriceWidget = document.querySelector('.stockPrice-widget')
     const list = stockPriceWidget.querySelector('.widget_price-list')
 
@@ -75,21 +64,48 @@ const createStocks = (data) => {
     card.append(cardDiv)
 
     const cardImg = createElem('img', 'widget_price-img');
-    cardImg.src = data[1].logo 
+    cardImg.src = arr.logo 
     cardDiv.append(cardImg)
-
+    
     const cardDivDiscript = createElem('div', 'widget_price-description');
     cardDiv.append(cardDivDiscript)
 
-    const cardTitle = createElem('h3', 'widget_price-title', data[1].name);
+    const cardTitle = createElem('h3', 'widget_price-title', arr.name);
     cardDivDiscript.append(cardTitle)
 
-    const cardInductry = createElem('p', 'widget_price-inductry', data[1].finnhubIndustry);
+    const cardInductry = createElem('p', 'widget_price-inductry', arr.industry);
     cardDivDiscript.append(cardInductry)
     
-    const cardPrice = createElem('p', 'widget_price-price', data[0].c + ' $');
+    const cardPrice = createElem('p', 'widget_price-price', arr.price + ' $');
     card.append(cardPrice)
 
     const btnAdd = createElem('button', 'widget_price-btn', 'Add to portfolio');
     cardDivDiscript.append(btnAdd)
 }
+let localStocks = JSON.parse(localStorage.getItem('stocks'))
+const exportStocksFromArr = () => {
+    localStocks.forEach(stock => {
+        createStocks(stock) 
+        
+    })
+}
+
+exportStocksFromArr()
+
+const addToPortfolio = () => {
+    const btnAdd = document.querySelectorAll('.widget_price-btn')
+    for (let add of btnAdd) {
+        add.addEventListener('click', function (e) {
+            let stockElem = e.target.closest('.widget_price-description')
+                .querySelector('.widget_price-title');
+            localStocks.forEach(stoc => {
+                if (stockElem.innerText === stoc.name) {
+                   console.log(stoc.name) 
+                   //и мы запускаем тут функцию добавления 
+                   //в портфолио разметки с данными
+                }
+            })   
+        })
+    }
+}
+addToPortfolio()

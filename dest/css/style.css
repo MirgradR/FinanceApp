@@ -176,6 +176,7 @@ ul li {
   width: 50px;
   height: 50px;
   margin-right: 20px;
+  border-radius: 50%;
 }
 
 .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-info {

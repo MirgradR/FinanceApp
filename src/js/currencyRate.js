@@ -5,6 +5,8 @@ let symbols = ['FB', 'AAPL', 'MS', 'JPM', 'JNJ', 'XOM', 'BAC', 'V', 'T', 'INTC',
 //let symbols = ['FB', 'AAPL', 'MS', 'AMZN']
 let stocksArr = [];
 
+let myPortfolio = JSON.parse(localStorage.getItem('Portfolio'))
+
 const getPrice = (ticker) => {
     const url_price = `https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${API_KEY}`
     return url_price
@@ -47,9 +49,7 @@ const createObject = (data, ticker) => {
     stockObj.name = data[1].name
     stockObj.logo = data[1].logo
     stockObj.industry = data[1].finnhubIndustry
-    stockObj.count = 1
-    stockObj.price = (Math.floor(data[0].c * 100) / 100) * stockObj.count
-    stockObj.inPortfolio = 'false'
+    stockObj.price = (Math.floor(data[0].c * 100) / 100)
     stocksArr.push(stockObj)
 }
 
@@ -82,30 +82,121 @@ const createStocks = (arr) => {
     const btnAdd = createElem('button', 'widget_price-btn', 'Add to portfolio');
     cardDivDiscript.append(btnAdd)
 }
+
 let localStocks = JSON.parse(localStorage.getItem('stocks'))
-const exportStocksFromArr = () => {
-    localStocks.forEach(stock => {
-        createStocks(stock) 
-        
+const exportStocksFromArr = (arr, func) => {
+    arr.forEach(stock => {
+        func(stock) 
     })
 }
 
-exportStocksFromArr()
+exportStocksFromArr(localStocks, createStocks)
 
 const addToPortfolio = () => {
     const btnAdd = document.querySelectorAll('.widget_price-btn')
     for (let add of btnAdd) {
         add.addEventListener('click', function (e) {
+            e.preventDefault()
             let stockElem = e.target.closest('.widget_price-description')
                 .querySelector('.widget_price-title');
             localStocks.forEach(stoc => {
                 if (stockElem.innerText === stoc.name) {
-                   console.log(stoc.name) 
-                   //и мы запускаем тут функцию добавления 
-                   //в портфолио разметки с данными
-                }
-            })   
+                    let obj = {}
+                    obj.name = stoc.name
+                    obj.logo = stoc.logo
+                    obj.count = 1
+                    
+                    let count = 0;
+                    for (let key of myPortfolio) {
+                        if (key.name === obj.name) {
+                            return count += 1
+                        }
+                    }
+                    if (count >= 1) {
+                        console.log('takoy est')
+                    } else {
+                        myPortfolio.push(obj)
+                        localStorage.setItem('Portfolio', JSON.stringify(myPortfolio))
+                        createPortfolioElem(obj)
+                        delitePortfolioElem()
+                    }
+                   
+                }      
+            })    
         })
     }
 }
 addToPortfolio()
+
+const createPortfolioElem = (arr) => {
+    const stockMyPortfolioWidget = document.querySelector('.myPortfolio-widget')
+    const list = stockMyPortfolioWidget.querySelector('.list-content__items')
+
+    const card = createElem('li', 'content-items__stock');
+    list.append(card)
+
+    const logo = createElem('img', 'stock-img');
+    logo.src = arr.logo
+    card.append(logo) 
+
+    const discription = createElem('div', 'stock-info');
+    card.append(discription)
+    const titleComp = createElem('h3', 'stock-info__name', arr.name);
+    discription.append(titleComp)
+
+    const sectionAmount = createElem('div', 'stock-number');
+    card.append(sectionAmount)
+    const amountNum = createElem('div', 'stock-number__amount');
+    sectionAmount.append(amountNum)
+    const priceStock = createElem('h3', 'stock-number__price', '140' + '$'); // PRICE
+    amountNum.append(priceStock)
+    const priceStockAll = createElem('h3', 'stock-number__price', '740' + '$'); // PRICE
+    amountNum.append(priceStockAll)
+
+    const sectionBtns = createElem('div', 'stock-number__count');
+    sectionAmount.append(sectionBtns)
+    const btnSell = createElem('button', 'btn-sell', 'Sell');
+    sectionBtns.append(btnSell)
+    const btnMinus = createElem('button', 'btn-minus');
+    btnMinus.innerHTML = `&#8211;`
+    sectionBtns.append(btnMinus)
+    const count = createElem('p', 'stock-count', '5'); // COUNT
+    sectionBtns.append(count)
+    const btnPlus = createElem('button', 'btn-plus', '+');
+    sectionBtns.append(btnPlus)
+
+    if (myPortfolio.length == 0) {
+        document.querySelector('.empty-list').style = 'display: block'
+        console.log('Empty')
+    } else {
+        document.querySelector('.empty-list').style = 'display: none'
+    }
+}
+console.log(myPortfolio)
+
+exportStocksFromArr(myPortfolio, createPortfolioElem)
+
+const delitePortfolioElem = () => {
+    const btnSell = document.querySelectorAll('.btn-sell')
+    for (let sell of btnSell) {
+        sell.addEventListener('click', function(e) {
+            e.preventDefault()
+            let stockElem = e.target.closest('.content-items__stock')
+                .querySelector('.stock-info__name');
+            myPortfolio.findIndex(function(item, index) { 
+                if (stockElem.innerText === item.name) { 
+                    myPortfolio.splice(index, 1)
+                    localStorage.setItem('Portfolio', JSON.stringify(myPortfolio))
+                    e.target.closest('.content-items__stock').remove()
+                    if (myPortfolio.length == 0) {
+                        document.querySelector('.empty-list').style = 'display: block'
+                    }
+                } 
+                
+            }) 
+             
+        })
+    }
+}
+delitePortfolioElem()
+

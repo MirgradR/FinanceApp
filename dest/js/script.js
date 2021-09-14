@@ -5,7 +5,10 @@ const API_KEY = 'c4q8am2ad3icc97rdfcg';
 let symbols = ['FB', 'AAPL', 'MS', 'AMZN']
 let stocksArr = [];
 
-let myPortfolio = JSON.parse(localStorage.getItem('Portfolio'))
+let myPortfolio = []//JSON.parse(localStorage.getItem('Portfolio'))
+if (localStorage.Portfolio) {
+    myPortfolio = JSON.parse(localStorage.getItem('Portfolio'))
+}
 
 const getPrice = (ticker) => {
     const url_price = `https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${API_KEY}`

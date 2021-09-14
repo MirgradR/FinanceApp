@@ -1,8 +1,8 @@
 // Stocks
 
 const API_KEY = 'c4q8am2ad3icc97rdfcg';
-let symbols = ['FB', 'AAPL', 'MS', 'JPM', 'JNJ', 'XOM', 'BAC', 'V', 'T', 'INTC', 'PFE', 'BA', 'KO', 'BABA', 'TSLA', 'NFLX', 'WMT', 'NKE', 'EA', 'MSFT']
-//let symbols = ['FB', 'AAPL', 'MS', 'AMZN']
+//let symbols = ['FB', 'AAPL', 'MS', 'JPM', 'JNJ', 'XOM', 'BAC', 'V', 'T', 'INTC', 'PFE', 'BA', 'KO', 'BABA', 'TSLA', 'NFLX', 'WMT', 'NKE', 'EA', 'MSFT']
+let symbols = ['FB', 'AAPL', 'MS', 'AMZN']
 let stocksArr = [];
 
 let myPortfolio = JSON.parse(localStorage.getItem('Portfolio'))
@@ -174,7 +174,12 @@ const createPortfolioElem = (arr) => {
 }
 console.log(myPortfolio)
 
-exportStocksFromArr(myPortfolio, createPortfolioElem)
+if (localStorage.Portfolio) {
+   exportStocksFromArr(myPortfolio, createPortfolioElem) 
+} else {
+    document.querySelector('.empty-list').style = 'display: block'
+}
+
 
 const delitePortfolioElem = () => {
     const btnSell = document.querySelectorAll('.btn-sell')

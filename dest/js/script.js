@@ -4,6 +4,12 @@ const API_KEY = 'c4q8am2ad3icc97rdfcg';
 //let symbols = ['FB', 'AAPL', 'MS', 'JPM', 'JNJ', 'XOM', 'BAC', 'V', 'T', 'INTC', 'PFE', 'BA', 'KO', 'BABA', 'TSLA', 'NFLX', 'WMT', 'NKE', 'EA', 'MSFT']
 let symbols = ['FB', 'AAPL', 'MS', 'AMZN']
 let stocksArr = [];
+let balance = {}
+balance.started = 10000
+balance.available = balance.started
+balance.asset = 0
+localStorage.setItem('balance', JSON.stringify(balance))
+
 
 let myPortfolio = []//JSON.parse(localStorage.getItem('Portfolio'))
 if (localStorage.Portfolio) {
@@ -95,6 +101,20 @@ const exportStocksFromArr = (arr, func) => {
 
 exportStocksFromArr(localStocks, createStocks)
 
+const addedStocks = () => {
+    const btnAdd = document.querySelectorAll('.widget_price-btn')
+    for (let add of btnAdd) {
+        let stockElem = add.parentElement.firstChild;
+        myPortfolio.forEach(stoc => {
+            if (stockElem.innerText === stoc.name) { 
+                add.style.backgroundColor = 'grey'
+                add.textContent = 'The stock is added'
+            }
+        })
+    }   
+}
+addedStocks()
+
 const addToPortfolio = () => {
     const btnAdd = document.querySelectorAll('.widget_price-btn')
     for (let add of btnAdd) {
@@ -116,12 +136,16 @@ const addToPortfolio = () => {
                         }
                     }
                     if (count >= 1) {
-                        console.log('takoy est')
+                        console.log(count)
                     } else {
                         myPortfolio.push(obj)
                         localStorage.setItem('Portfolio', JSON.stringify(myPortfolio))
+                        
                         createPortfolioElem(obj)
                         delitePortfolioElem()
+                        counterAmountStocks()
+                        setBalancePortfolio()
+                        addedStocks()
                     }
                    
                 }      
@@ -130,6 +154,17 @@ const addToPortfolio = () => {
     }
 }
 addToPortfolio()
+
+const getPricePortfolio = (name, arr) => {
+    let resp;
+    arr.forEach(stoc => { 
+        if (name.name === stoc.name) {
+            resp = stoc.price
+            return resp 
+        }
+    })
+    return resp
+}
 
 const createPortfolioElem = (arr) => {
     const stockMyPortfolioWidget = document.querySelector('.myPortfolio-widget')
@@ -151,9 +186,9 @@ const createPortfolioElem = (arr) => {
     card.append(sectionAmount)
     const amountNum = createElem('div', 'stock-number__amount');
     sectionAmount.append(amountNum)
-    const priceStock = createElem('h3', 'stock-number__price', '140' + '$'); // PRICE
+    const priceStock = createElem('h3', 'stock-number__price', getPricePortfolio(arr, localStocks) + '$'); 
     amountNum.append(priceStock)
-    const priceStockAll = createElem('h3', 'stock-number__price', '740' + '$'); // PRICE
+    const priceStockAll = createElem('h3', 'stock-number__price', (Math.floor(getPricePortfolio(arr, localStocks) * arr.count * 100) / 100) + '$'); 
     amountNum.append(priceStockAll)
 
     const sectionBtns = createElem('div', 'stock-number__count');
@@ -163,7 +198,7 @@ const createPortfolioElem = (arr) => {
     const btnMinus = createElem('button', 'btn-minus');
     btnMinus.innerHTML = `&#8211;`
     sectionBtns.append(btnMinus)
-    const count = createElem('p', 'stock-count', '5'); // COUNT
+    const count = createElem('p', 'stock-count', arr.count);
     sectionBtns.append(count)
     const btnPlus = createElem('button', 'btn-plus', '+');
     sectionBtns.append(btnPlus)
@@ -175,7 +210,6 @@ const createPortfolioElem = (arr) => {
         document.querySelector('.empty-list').style = 'display: none'
     }
 }
-console.log(myPortfolio)
 
 if (localStorage.Portfolio) {
    exportStocksFromArr(myPortfolio, createPortfolioElem) 
@@ -195,7 +229,9 @@ const delitePortfolioElem = () => {
                 if (stockElem.innerText === item.name) { 
                     myPortfolio.splice(index, 1)
                     localStorage.setItem('Portfolio', JSON.stringify(myPortfolio))
+                    addedStocks()
                     e.target.closest('.content-items__stock').remove()
+                    setBalancePortfolio()
                     if (myPortfolio.length == 0) {
                         document.querySelector('.empty-list').style = 'display: block'
                     }
@@ -204,9 +240,109 @@ const delitePortfolioElem = () => {
             }) 
              
         })
+        
+
     }
 }
 delitePortfolioElem()
+
+const counterAmountStocks = () => {
+    const minusBtns = document.querySelectorAll('.btn-minus')
+    for (let minus of minusBtns) {
+        minus.addEventListener('click', function(e) {
+            e.preventDefault()
+            let stockPerPrice = e.target.closest('.content-items__stock')
+                .querySelector('.stock-number__price');
+            let stockAllPrice = e.target.closest('.content-items__stock')
+                .querySelector('.stock-number__price:last-child');
+            let stockCount = e.target.closest('.content-items__stock')
+                .querySelector('.stock-count');
+            let stockElem = e.target.closest('.content-items__stock')
+                .querySelector('.stock-info__name');
+            myPortfolio.forEach(stoc => {
+                if (stockElem.innerText === stoc.name) {
+                    if (stoc.count > 1) {
+                        stoc.count --
+                        +stockCount.textContent -- 
+                        let perPrice = stockPerPrice.textContent.split('')
+                        perPrice.length = perPrice.length - 1
+                        stockAllPrice.textContent = (Math.floor(perPrice.join('') * stoc.count * 100) / 100) + '$' 
+                        localStorage.setItem('Portfolio', JSON.stringify(myPortfolio))
+                        setBalancePortfolio()
+                    }
+                }
+            })
+        })
+    }
+    const plusBtns = document.querySelectorAll('.btn-plus')
+    for (let plus of plusBtns) {
+        plus.addEventListener('click', function(e) {
+            e.preventDefault()
+            let stockPerPrice = e.target.closest('.content-items__stock')
+                .querySelector('.stock-number__price');
+            let stockAllPrice = e.target.closest('.content-items__stock')
+                .querySelector('.stock-number__price:last-child');
+            let stockCount = e.target.closest('.content-items__stock')
+                .querySelector('.stock-count');
+            let stockElem = e.target.closest('.content-items__stock')
+                .querySelector('.stock-info__name');
+            myPortfolio.forEach(stoc => {
+                if (stockElem.innerText === stoc.name) {
+                    if (stoc.count < 10 && getSumPricePortfolio() < JSON.parse(localStorage.getItem('balance')).started) {
+                        stoc.count++
+                        +stockCount.textContent ++
+                        let perPrice = stockPerPrice.textContent.split('')
+                        perPrice.length = perPrice.length - 1
+                        stockAllPrice.textContent = (Math.floor(perPrice.join('') * stoc.count * 100) / 100) + '$'
+                        localStorage.setItem('Portfolio', JSON.stringify(myPortfolio))
+                        setBalancePortfolio()
+                    }
+                }
+            })
+        })
+    }
+}
+counterAmountStocks()
+
+const getSumPricePortfolio = () => {
+    let sum = 0;
+    const balanceAvailable = document.querySelector('.user-balance__count')
+    myPortfolio.forEach(stoc => {
+        sum += +getPricePortfolio(stoc, localStocks) * stoc.count 
+        if( sum >= JSON.parse(localStorage.getItem('balance')).started) {
+            balanceAvailable.style.color = 'red'
+            alert('Your balance: ' + (Math.floor((JSON.parse(localStorage.getItem('balance')).started - sum) * 100) / 100) + '$')
+        } else {
+            balanceAvailable.style.color = 'black'
+        }
+    
+    })
+    return sum
+}
+
+const setBalancePortfolio = () => {
+    const balanceAvailable = document.querySelector('.user-balance__count')
+    const balanceAsset = document.querySelector('.user-balance__count:last-child')
+    let localBalance = JSON.parse(localStorage.getItem('balance'))
+    balanceAvailable.textContent = localBalance.available + '$'
+
+    
+    if (myPortfolio.length === 0) {
+        localBalance.available = localBalance.started
+        balanceAvailable.textContent = localBalance.started + '$'
+        localBalance.asset = 0
+        balanceAsset.textContent = 0 
+        
+    } else {
+        localBalance.asset = (Math.floor(getSumPricePortfolio() * 100) / 100)
+        balanceAsset.textContent = localBalance.asset + '$'
+        localBalance.available = (Math.floor((localBalance.started - localBalance.asset) * 100) / 100)
+        balanceAvailable.textContent = localBalance.available + '$'
+    }
+    localStorage.setItem('balance', JSON.stringify(localBalance))
+}
+setBalancePortfolio()
+
 
 ;
 

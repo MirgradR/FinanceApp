@@ -261,6 +261,121 @@ ul li {
   background-color: rgba(175, 23, 23, 0.897);
 }
 
+.currencyRate-widget .currencyRate-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.currencyRate-widget .currencyRate-content .current-course {
+  width: 50%;
+}
+
+.currencyRate-widget .currencyRate-content .current-course .current-course__title {
+  font-size: 22px;
+  margin-bottom: 15px;
+}
+
+.currencyRate-widget .currencyRate-content .current-course__list {
+  border-radius: 15px;
+}
+
+.currencyRate-widget .currencyRate-content .current-course__list > * {
+  border-bottom: 1px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: start;
+}
+
+.currencyRate-widget .currencyRate-content .current-course__list > *:first-child {
+  border-top: 1px solid black;
+}
+
+.currencyRate-widget .currencyRate-content .current-course__list .current-course__item {
+  background-color: rgba(255, 254, 254, 0.26);
+  padding: 0 5px;
+}
+
+.currencyRate-widget .currencyRate-content .current-course__list .current-course__item img {
+  max-width: 40px;
+  max-height: 40px;
+  margin-right: 15px;
+}
+
+.currencyRate-widget .currencyRate-content .current-course__list .current-course__item .rate-item__info {
+  margin-right: 10px;
+  max-width: 100px;
+}
+
+.currencyRate-widget .currencyRate-content .current-course__list .current-course__item .rate-item__price {
+  margin-left: auto;
+  font-size: 18px;
+}
+
+.currencyRate-widget .currencyRate-content .currency-conversion {
+  width: 50%;
+  margin-left: 15px;
+}
+
+.currencyRate-widget .currencyRate-content .currency-conversion .currency-conversion__title {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.currencyRate-widget .currencyRate-content .currency-conversion .currency-conversion__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  background-color: #fff;
+  height: 80px;
+  border-radius: 10px;
+  padding: 10px 5px;
+}
+
+.currencyRate-widget .currencyRate-content .currency-conversion .currency-conversion__form .choose-rate__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.currencyRate-widget .currencyRate-content .currency-conversion .currency-conversion__form .choose-rate__form > *:first-child {
+  margin-bottom: 20px;
+}
+
+.currencyRate-widget .currencyRate-content .currency-conversion .currency-conversion__form .price-rate__form {
+  margin-left: 20px;
+}
+
+.currencyRate-widget .currencyRate-content .currency-conversion .currency-conversion__form .price-rate__form .course-amount,
+.currencyRate-widget .currencyRate-content .currency-conversion .currency-conversion__form .price-rate__form .course-result {
+  background-color: rgba(199, 198, 198, 0.541);
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.currencyRate-widget .currencyRate-content .currency-conversion .currency-conversion__form .price-rate__form .course-result {
+  margin-top: 8px;
+}
+
 .wrapper {
   width: 100%;
   height: auto;
@@ -868,6 +983,40 @@ ul li {
   .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .stock-count,
   .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .btn-sell {
     font-size: 16px;
+  }
+}
+
+@media (max-width: 560px) {
+  .currencyRate-widget .currencyRate-content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .currencyRate-widget .currencyRate-content .current-course,
+  .currencyRate-widget .currencyRate-content .currency-conversion {
+    width: 100%;
+  }
+
+  .currencyRate-widget .currencyRate-content .current-course {
+    -webkit-box-ordinal-group: 2;
+    -ms-flex-order: 1;
+    order: 1;
+  }
+
+  .currencyRate-widget .currencyRate-content .currency-conversion {
+    -webkit-box-ordinal-group: 1;
+    -ms-flex-order: 0;
+    order: 0;
+    margin-bottom: 15px;
+    margin-left: 0;
   }
 }
 

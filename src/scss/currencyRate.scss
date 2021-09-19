@@ -1,0 +1,98 @@
+.currencyRate-widget {
+    .currencyRate-content {
+        display: flex;
+        justify-content: space-between;
+        .current-course {
+           width: 50%; 
+           .current-course__title {
+               font-size: 22px;
+               margin-bottom: 15px;
+           }
+        }
+        .current-course__list {
+            border-radius: 15px; 
+            &>* {
+                border-bottom: 1px solid black;
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                &:first-child {
+                   border-top: 1px solid black; 
+                }
+            }
+            .current-course__item {
+                background-color: rgba(255, 254, 254, 0.26);
+                padding: 0 5px;
+                img {
+                    max-width: 40px;
+                    max-height: 40px;
+                    margin-right: 15px;
+                }
+                .rate-item__info {
+                    margin-right: 10px;
+                    max-width: 100px;
+                }
+                .rate-item__price {
+                    margin-left: auto;
+                    font-size: 18px;
+                }
+            }
+        }
+        .currency-conversion {
+            width: 50%;
+            margin-left: 15px;
+            .currency-conversion__title {
+                font-size: 22px;
+                margin-bottom: 10px;  
+            }
+            .currency-conversion__form {
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                background-color: #fff;
+                height: 80px;
+                border-radius: 10px;
+                padding: 10px 5px;
+                .choose-rate__form {
+                    display: flex;
+                    flex-direction: column;
+                    &>*:first-child {
+                        margin-bottom: 20px;
+                    }
+                }
+                .price-rate__form {
+                    margin-left: 20px;
+                    .course-amount, .course-result {
+                        background-color: rgba(199, 198, 198, 0.541);
+                        padding: 5px 10px;
+                        border-radius: 10px;
+                    }
+                    .course-result {
+                        margin-top: 8px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 560px) {
+    .currencyRate-widget {
+        .currencyRate-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .current-course, .currency-conversion { 
+                width: 100%;
+            }
+            .current-course {
+                order: 1;
+            }
+            .currency-conversion {
+                order: 0;
+                margin-bottom: 15px;
+                margin-left: 0;
+            }
+        }
+    }
+}

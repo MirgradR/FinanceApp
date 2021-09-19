@@ -1,4 +1,28 @@
 <div class="currencyRate-widget"> <!--active-widget-->
     <h2 class="currencyRate-widget__title widget-title">Currency Rate</h2>
-    <p class="currencyRate-widget__text widget-text">Price of dollar, euro</p>
+    <div class="currencyRate-content">
+        <div class="current-course">
+            <p class="current-course__title">Current course</p>
+            <ul class="current-course__list">
+
+            </ul>
+        </div>
+        <div class="currency-conversion">
+            <p class="currency-conversion__title">Convert rate</p>
+            <form class="currency-conversion__form">
+                <div class="choose-rate__form">
+                    <select name='name-from' id="name-from">
+                        <option class="rate-option__from" value="USD">USD</option>
+                    </select>
+                    <select name='name-to' id="name-to">
+                        
+                    </select>
+                </div>
+                <div class="price-rate__form">
+                    <input class="course-amount" type="number" placeholder="0">
+                    <p class="course-result">0</p>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>

@@ -343,7 +343,103 @@ const setBalancePortfolio = () => {
 }
 setBalancePortfolio()
 
+// =========== Currency rate ==========
 
+const currencyRate_API_KEY = 'b124db965ce6a05733ebb7ac5698bc3b'
+const currenciesList = 'AUD,CAD,CHF,EUR,GBP,PLN,RUB,JPY,CNY,UAH,TRY'
+const usDollar = 'US Dollar / '
+const currenciesDescription =['Australian Dollar', 'Canadian Dollar', 'Swiss Franc', 'Euro', 'Pound', 'Polish zloty', 'Russian Ruble', 'Japanese yen', 'Chinese Yuan', 'Ukrainian hryvnia', 'Turkish Lira']
+const imgFlags = ['img/flag/Australia.png', 'img/flag/Canada.png','img/flag/Switzerland.png', 'img/flag/European-Union.png', 'img/flag/Britian.png', 'img/flag/Poland.png', 'img/flag/Russia.png', 'img/flag/Japan.png', 'img/flag/China.png', 'img/flag/Ukraine.png', 'img/flag/Turkey.png']
+const currencyRate_URL = `http://api.currencylayer.com/live?currencies=${currenciesList}&access_key=${currencyRate_API_KEY}`
+
+const getValueRate = (data) => {
+    let count = 0
+    for (let rate in data.quotes) {
+        const rateElem = rate.split('').slice(0,3).join('') + '/' + rate.split('').slice(3,6).join('')
+        const ratePrice = Math.floor(data.quotes[rate] * 10000) / 10000
+        createCurrencyRate(rateElem, ratePrice, imgFlags[count], currenciesDescription[count])
+        count++
+        
+    }
+    const currencyRate = document.querySelector('.currencyRate-widget')
+    let idElem = currencyRate.querySelectorAll('li')
+    idElem.forEach(ctoc => {
+        let nameId = ctoc.children[2].id
+        createConvertRate(nameId)
+        
+    })
+    convertationCalculator()
+}
+
+const getCurrencyRate = (url) => {
+    fetch(url)
+        .then(resp => resp.json())
+        .then(data => {
+            getValueRate(data)
+            
+        })
+        
+}
+getCurrencyRate(currencyRate_URL)
+
+const createCurrencyRate = (value, price, flag, desript) => {
+    const currencyRate = document.querySelector('.currencyRate-widget')
+    const currencyRateList = currencyRate.querySelector('.current-course__list')
+
+    const card = createElem('li', 'current-course__item');
+    currencyRateList.append(card)
+
+    const rateItemInfo = createElem('div', 'rate-item__info');
+    card.append(rateItemInfo)
+    const rateItemTitle = createElem('h3', 'rate-item__title', value)
+    rateItemInfo.append(rateItemTitle)
+    const rateItemDescript = createElem('p', 'rate-item__descript', usDollar + desript)
+    rateItemInfo.append(rateItemDescript)
+    
+    const imgFlag = createElem('img', 'rate-item__flag');
+    imgFlag.src = flag
+    card.append(imgFlag) 
+
+    const rateItemPrice = createElem('p', 'rate-item__price', price)
+    rateItemPrice.id = value.split('').slice(4,7).join('')
+    card.append(rateItemPrice)
+}
+
+const createConvertRate = (nameId) => {
+    const currencyRate = document.querySelector('.currencyRate-widget')
+    const rateFrom = currencyRate.querySelector('#name-from')
+    const rateTo = currencyRate.querySelector('#name-to')
+
+    const optionRateTo = createElem('option', 'rate-option', nameId);
+    optionRateTo.value = nameId
+    rateTo.append(optionRateTo)
+}
+
+const convertationCalculator = () => {
+    const currencyRate = document.querySelector('.currencyRate-widget')
+    const rateTo = currencyRate.querySelector('#name-to') 
+    const optionRateTo = currencyRate.querySelectorAll('.rate-option')
+    const inputAmountNumber = currencyRate.querySelector('.course-amount')
+    const courseResult = currencyRate.querySelector('.course-result')
+
+    let selectCourse = currencyRate.querySelector('#AUD').textContent
+    let selectRate = 'AUD'
+    rateTo.addEventListener('change', function() {
+        selectRate = rateTo.value
+        optionRateTo.forEach(opt => {
+            if (opt.value === selectRate) {
+                selectCourse = currencyRate.querySelector(`#${selectRate}`).textContent
+                return selectCourse
+            }
+        })
+        return selectRate
+    })
+
+    inputAmountNumber.addEventListener('input', function() {
+        let amount = inputAmountNumber.value
+        courseResult.textContent = (Math.floor(amount * selectCourse * 10000) / 10000)
+    })
+}
 ;
 
 const widgetBody = document.querySelector('.widget-body')

@@ -348,19 +348,40 @@ setBalancePortfolio()
 const currencyRate_API_KEY = 'b124db965ce6a05733ebb7ac5698bc3b'
 const currenciesList = 'AUD,CAD,CHF,EUR,GBP,PLN,RUB,JPY,CNY,UAH,TRY'
 const usDollar = 'US Dollar / '
-const currenciesDescription =['Australian Dollar', 'Canadian Dollar', 'Swiss Franc', 'Euro', 'Pound', 'Polish zloty', 'Russian Ruble', 'Japanese yen', 'Chinese Yuan', 'Ukrainian hryvnia', 'Turkish Lira']
-const imgFlags = ['img/flag/Australia.png', 'img/flag/Canada.png','img/flag/Switzerland.png', 'img/flag/European-Union.png', 'img/flag/Britian.png', 'img/flag/Poland.png', 'img/flag/Russia.png', 'img/flag/Japan.png', 'img/flag/China.png', 'img/flag/Ukraine.png', 'img/flag/Turkey.png']
+// const currenciesDescription =['Australian Dollar', 'Canadian Dollar', 'Swiss Franc', 'Euro', 'Pound', 'Polish zloty', 'Russian Ruble', 'Japanese yen', 'Chinese Yuan', 'Ukrainian hryvnia', 'Turkish Lira']
+// const imgFlags = ['img/flag/Australia.png', 'img/flag/Canada.png','img/flag/Switzerland.png', 'img/flag/European-Union.png', 'img/flag/Britian.png', 'img/flag/Poland.png', 'img/flag/Russia.png', 'img/flag/Japan.png', 'img/flag/China.png', 'img/flag/Ukraine.png', 'img/flag/Turkey.png']
+const imgFlags = ['img/flag/Canada.png', 'img/flag/Switzerland.png', 'img/flag/Japan.png', 'img/flag/Russia.png', 'img/flag/Poland.png', 'img/flag/Turkey.png', 'img/flag/Australia.png', 'img/flag/China.png', 'img/flag/European-Union.png', 'img/flag/Britian.png', 'img/flag/Ukraine.png']
+const currenciesDescription =['Canadian Dollar', 'Swiss Franc', 'Japanese yen', 'Russian Ruble', 'Polish zloty', 'Turkish Lira', 'Australian Dollar', 'Chinese Yuan', 'Euro', 'Pound', 'Ukrainian hryvnia']
 const currencyRate_URL = `http://api.currencylayer.com/live?currencies=${currenciesList}&access_key=${currencyRate_API_KEY}`
+
+// const getValueRate = (data) => {
+//     let count = 0
+//     for (let rate in data.quotes) { //data.quotes
+//         const rateElem = rate.split('').slice(0,3).join('') + '/' + rate.split('').slice(3,6).join('')
+//         const ratePrice = Math.floor(data.quotes[rate] * 10000) / 10000  //data.quotes[rate]
+//         createCurrencyRate(rateElem, ratePrice, imgFlags[count], currenciesDescription[count])
+//         count++
+//         console.log(rate)
+//     }
+//     const currencyRate = document.querySelector('.currencyRate-widget')
+//     let idElem = currencyRate.querySelectorAll('li')
+//     idElem.forEach(ctoc => {
+//         let nameId = ctoc.children[2].id
+//         createConvertRate(nameId)
+        
+//     })
+//     convertationCalculator()
+// }
 
 const getValueRate = (data) => {
     let count = 0
-    for (let rate in data.quotes) {
-        const rateElem = rate.split('').slice(0,3).join('') + '/' + rate.split('').slice(3,6).join('')
-        const ratePrice = Math.floor(data.quotes[rate] * 10000) / 10000
+    data.forEach(rate => {
+        const rateElem = rate.s
+        const ratePrice = Math.floor(rate.c * 10000) / 10000  
         createCurrencyRate(rateElem, ratePrice, imgFlags[count], currenciesDescription[count])
         count++
         
-    }
+    })
     const currencyRate = document.querySelector('.currencyRate-widget')
     let idElem = currencyRate.querySelectorAll('li')
     idElem.forEach(ctoc => {
@@ -371,16 +392,36 @@ const getValueRate = (data) => {
     convertationCalculator()
 }
 
-const getCurrencyRate = (url) => {
-    fetch(url)
-        .then(resp => resp.json())
-        .then(data => {
-            getValueRate(data)
+
+
+const idRate = '1790,18,19,1815,1817,30,22,20,1806,1888,33'
+const listCurrencies = 'USD/AUD,USD/CAD,USD/CHF,USD/EUR,USD/GBP,USD/PLN,USD/RUB,USD/JPY,USD/CNY,USD/UAH,USD/TRY'
+   // DYLE6KtoNRkqm6lCbIgGAC8eO 
+fetch(`https://fcsapi.com/api-v3/forex/latest?id=${idRate}&access_key=DYLE6KtoNRkqm6lCbIgGAC8eO`)
+    .then(resp => resp.json())
+    .then(data => {
+        console.log(data.response)
+        getValueRate(data.response)
+        // let dataR = data.response
+        // dataR.forEach(rate => {
+        //     //console.log(rate.s + ' ' + rate.c)
+        // })
+    
+    })
+
+
+
+// const getCurrencyRate = (url) => {
+//     fetch(url)
+//         .then(resp => resp.json())
+//         .then(data => {
+//             //console.log(data)
+//             getValueRate(data)
             
-        })
+//         })
         
-}
-getCurrencyRate(currencyRate_URL)
+// }
+// getCurrencyRate(currencyRate_URL)
 
 const createCurrencyRate = (value, price, flag, desript) => {
     const currencyRate = document.querySelector('.currencyRate-widget')

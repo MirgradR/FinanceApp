@@ -529,9 +529,9 @@ const getNews = (category) => {
     .then(data => {
         const dataNews = data.articles
         for (let i = 0; i < 7; i++) {
-            if (dataNews[i].urlToImage == null) {
-                dataNews[i].urlToImage = 'img/category/worldNews.png'
-            }
+            // if (dataNews[i].urlToImage == null) {
+            //     dataNews[i].urlToImage = 'img/category/worldNews.png'
+            // }
             if (dataNews[i].description == 'False') {
                 i++
             }

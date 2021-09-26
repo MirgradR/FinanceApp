@@ -9,9 +9,9 @@ const getNews = (category) => {
             // if (dataNews[i].urlToImage == null) {
             //     dataNews[i].urlToImage = 'img/category/worldNews.png'
             // }
-            if (dataNews[i].description == 'False') {
-                i++
-            }
+            // if (dataNews[i].description == 'False') {
+            //     i++
+            // }
             createCardsNews(dataNews[i], category)
         }      
     })

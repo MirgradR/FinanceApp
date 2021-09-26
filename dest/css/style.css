@@ -376,6 +376,177 @@ ul li {
   margin-top: 8px;
 }
 
+.incameCalculator-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.incameCalculator-content .calculator-title {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.incameCalculator-content .calculator-input {
+  margin-right: 15px;
+}
+
+.incameCalculator-content .calculator-input input {
+  border: 1px solid #000;
+  padding: 5px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  background-color: rgba(231, 227, 227, 0.76);
+}
+
+.incameCalculator-content .calculator-input label {
+  font-size: 18px;
+}
+
+.incameCalculator-content .calculator-input .section-income {
+  border-bottom: 1px solid #000;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.incameCalculator-content .calculator-input .section-income .form-income {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.incameCalculator-content .calculator-input .section-expenses .form-expense {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.incameCalculator-content .calculator-output {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.incameCalculator-content .calculator-output p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-size: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #000;
+}
+
+.incameCalculator-content .calculator-output p span {
+  text-align: center;
+  background-color: #b2b3b4;
+  padding: 5px;
+  max-width: 90px;
+  height: 20px;
+}
+
+.incameCalculator-content .calculator-input,
+.incameCalculator-content .calculator-output {
+  width: 49%;
+  background-color: rgba(17, 1, 1, 0.103);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.economicNews-content .news-category {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.economicNews-content .news-category .news-category__item {
+  padding: 5px 10px;
+  background-color: rgba(184, 194, 191, 0.877);
+  margin-right: 30px;
+  font-size: 16px;
+  border-radius: 10px;
+  width: 80px;
+  text-align: center;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.economicNews-content .news-category .news-category__item.active {
+  background-color: rgba(46, 49, 48, 0.877);
+  color: #dddfe0;
+}
+
+.economicNews-content .news-category .news-category__item:hover {
+  background-color: rgba(87, 114, 105, 0.877);
+}
+
+.economicNews-content .news-content .news-list {
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  gap: 15px;
+}
+
+.economicNews-content .news-content .news-list .news-list__card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -ms-flex-line-pack: justify;
+  align-content: space-between;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.economicNews-content .news-content .news-list .news-list__card:first-child {
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.economicNews-content .news-content .news-list .news-list__card .news-card__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.economicNews-content .news-content .news-list .news-list__card .news-card__title {
+  margin-bottom: 10px;
+  text-decoration: underline;
+}
+
+.economicNews-content .news-content .news-list .news-list__card .news-card__description {
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+
+.economicNews-content .news-content .news-list .news-list__card .news-card__img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 5px;
+}
+
+.economicNews-content .news-content .news-list .news-list__card .news-card__url {
+  margin-top: auto;
+}
+
 .wrapper {
   width: 100%;
   height: auto;
@@ -616,6 +787,31 @@ ul li {
   display: block;
 }
 
+.search-stock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  width: 275px;
+}
+
+.search-stock::before {
+  content: "";
+  width: 28px;
+  height: 28px;
+  background: url("../img/searchicon.png") no-repeat;
+  position: absolute;
+  right: 6px;
+  top: 5px;
+}
+
+.search-stock .search-stock__input {
+  margin-bottom: 15px;
+  padding: 10px 10px;
+  border-radius: 10px;
+  width: 275px;
+}
+
 .widget_price-list {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -784,6 +980,31 @@ ul li {
   .myPortfolio-widget .profile-user .profile-user__card .info-owner__data {
     font-size: 16px;
   }
+
+  .economicNews-content .news-content .news-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .economicNews-content .news-content .news-list .news-list__card:first-child {
+    grid-row-start: 1;
+    grid-row-end: 1;
+  }
+
+  .economicNews-content .news-category {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+  }
+
+  .economicNews-content .news-category .news-category__item {
+    padding: 5px;
+    margin-right: 15px;
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 860px) {
@@ -922,6 +1143,53 @@ ul li {
   .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .stock-count,
   .myPortfolio-widget .assets-list .list-content__items .content-items__stock .stock-number .stock-number__count .btn-sell {
     font-size: 18px;
+  }
+
+  .widget .widget-body .incomeCalculator-widget__title {
+    font-size: 26px;
+  }
+
+  .incameCalculator-content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .incameCalculator-content .calculator-input,
+  .incameCalculator-content .calculator-output {
+    width: 90%;
+    margin-right: 0;
+  }
+
+  .incameCalculator-content .calculator-input {
+    margin-bottom: 15px;
+  }
+
+  .economicNews-content .news-content .news-list {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .economicNews-content .news-category {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    max-width: 300px;
+    row-gap: 15px;
+    justify-self: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .economicNews-content .news-category .news-category__item {
+    padding: 5px;
+    -ms-flex-item-align: center;
+    align-self: center;
+    font-size: 14px;
   }
 }
 
@@ -1147,5 +1415,53 @@ ul li {
 
   .header .content-group .content-group__content .currency-rate > * {
     font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .economicNews-content .news-content .news-list {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .economicNews-content .news-content .news-list .news-list__card .news-card__info {
+    font-size: 12px;
+  }
+
+  .economicNews-content .news-content .news-list .news-list__card .news-card__title {
+    font-size: 13px;
+  }
+
+  .economicNews-content .news-content .news-list .news-list__card .news-card__description {
+    font-size: 13px;
+  }
+
+  .economicNews-content .news-category {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    row-gap: 15px;
+    justify-self: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .economicNews-content .news-category .news-category__item {
+    padding: 5px 0;
+    -ms-flex-item-align: center;
+    align-self: center;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 350px) {
+  .widget .widget-body {
+    padding: 5px;
+    margin: 5px;
+    margin-top: 30px;
+  }
+
+  .widget .widget-body .incomeCalculator-widget__title {
+    font-size: 26px;
   }
 }

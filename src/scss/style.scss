@@ -1,6 +1,8 @@
 @import 'resetting';
 @import 'myPortfolio';
 @import 'currencyRate';
+@import 'incomeCalculator';
+@import 'economicNews';
 
 .wrapper {
     width: 100%;
@@ -207,6 +209,26 @@
     }
 }
 // Stock price
+.search-stock {
+    display: flex;
+    position: relative;
+    width: 275px;
+    &::before {
+        content: '';
+        width: 28px;
+        height: 28px;
+        background: url('../img/searchicon.png') no-repeat;
+        position: absolute;   
+        right: 6px;
+        top: 5px;
+    }
+    .search-stock__input {
+        margin-bottom: 15px;
+        padding: 10px 10px;
+        border-radius: 10px;
+        width: 275px;
+    }
+}
 
 .widget_price-list {
     display: grid;

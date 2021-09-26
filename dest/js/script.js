@@ -2,7 +2,7 @@
 
 const API_KEY = 'c4q8am2ad3icc97rdfcg';
 //let symbols = ['FB', 'AAPL', 'MS', 'JPM', 'JNJ', 'XOM', 'BAC', 'V', 'T', 'INTC', 'PFE', 'BA', 'KO', 'BABA', 'TSLA', 'NFLX', 'WMT', 'NKE', 'EA', 'MSFT']
-let symbols = ['FB', 'AAPL', 'MS', 'AMZN']
+let symbols = ['FB', 'AAPL', 'MS', 'XOM']
 let stocksArr = [];
 let balance = {}
 balance.started = 10000
@@ -372,12 +372,23 @@ const getValueRate = (data) => {
     convertationCalculator()
 }
 
+const setCurrencyRate = () => {
+    const headerCourseFirst = document.querySelector('.ruble')
+    const headerCourseSecond = document.querySelector('.euro')
+
+    const rubleCourse = document.getElementById('RUB')  
+    const euroCourse = document.getElementById('EUR') 
+
+    headerCourseFirst.textContent = 'RUB ' + (Math.floor(rubleCourse.textContent * 100) / 100)
+    headerCourseSecond.textContent = 'EUR ' + (Math.floor(euroCourse.textContent * 100) / 100)     
+}
+
 const getCurrencyRate = (url) => {
     fetch(url)
         .then(resp => resp.json())
         .then(data => {
-            console.log(data.response)
             getValueRate(data.response)
+            setCurrencyRate()
         })    
 }
 getCurrencyRate(currencyRate_URL)
@@ -440,7 +451,150 @@ const convertationCalculator = () => {
         courseResult.textContent = (Math.floor(amount * selectCourse * 10000) / 10000)
     })
 }
+
+// Search stocks
+
+const searchStocks = () => {
+    const searchInput = document.querySelector('.search-stock__input') 
+    const stockCards = document.querySelectorAll('.widget_price-card')
+    searchInput.addEventListener('input', function() {
+        let value = RegExp(searchInput.value.trim(), 'gi')
+        if (value != '') {
+            for(let card of stockCards) {
+                const cardTitle = card.querySelector('.widget_price-title').textContent
+                if (cardTitle.search(value) == -1) {
+                    card.style.display = 'none'
+                } else {
+                    card.style.display = 'flex'
+                }
+            }
+        }
+    })
+}
+searchStocks()
 ;
+const getResult = (elem, value) => {
+    elem.textContent = value
+    getRemains()
+}
+
+const sumArr = (arr) => {
+    let sum = 0
+    for (let i = 0; i < arr.length; i++) {
+        sum += +arr[i]
+    }
+    return sum
+}
+
+const getRemains = () => {
+    const remainsResult = document.getElementById('result-remains')
+    const incomeResult = document.getElementById('result-income').textContent
+    const expenseResult = document.getElementById('result-expenses').textContent
+    remainsResult.textContent = (+incomeResult - +expenseResult).toLocaleString()
+}
+
+const getIncome = () => {
+    const incomeResult = document.getElementById('result-income')
+    const incomeInputs = document.querySelectorAll('.form-income .income-input')
+    let sum = []
+    for (let i = 0; i < incomeInputs.length; i++) {
+        sum.push(0)
+        incomeInputs[i].addEventListener('input', function() {
+            sum[i] = this.value
+            getResult(incomeResult, sumArr(sum))
+        })  
+    }   
+}
+getIncome()
+
+const getExpenses = () => {
+    const expenseResult = document.getElementById('result-expenses')
+    const expenseInputs = document.querySelectorAll('.form-expense .expense-input')
+    let sum = []
+    for (let i = 0; i < expenseInputs.length; i++) {
+        sum.push(0)
+        expenseInputs[i].addEventListener('input', function() {
+            sum[i] = this.value
+            getResult(expenseResult, sumArr(sum))
+        })  
+    }
+}
+getExpenses()
+; 
+const API_KEY_NEWS = '1de49cf49c8b420c9333bade896baea7'
+
+const getNews = (category) => {
+    fetch(`https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${API_KEY_NEWS}`)
+    .then(resp => resp.json())
+    .then(data => {
+        const dataNews = data.articles
+        for (let i = 0; i < 7; i++) {
+            if (dataNews[i].urlToImage == null) {
+                dataNews[i].urlToImage = 'img/category/worldNews.png'
+            }
+            if (dataNews[i].description == 'False') {
+                i++
+            }
+            createCardsNews(dataNews[i], category)
+        }      
+    })
+}
+getNews('business')
+
+const createCardsNews = (data, category) => {
+    const economicNews = document.querySelector('.economicNews-widget')
+    const newsList = economicNews.querySelector('.news-list')
+
+    const card = createElem('li', 'news-list__card');
+    newsList.append(card)
+
+    const cardInfo = createElem('div', 'news-card__info');
+    card.append(cardInfo)
+    const cardInfoName = createElem('h3', 'news-card__info-name', data.source.name);
+    cardInfo.append(cardInfoName)
+    const cardInfoCategory = createElem('h4', 'news-card__info-category', category);
+    cardInfo.append(cardInfoCategory)
+
+    const cardTitle = createElem('p', 'news-card__title', data.title);
+    card.append(cardTitle)
+
+    const cardDescription = createElem('p', 'news-card__description', data.description);
+    card.append(cardDescription)
+
+    const cardImg = createElem('img', 'news-card__img');
+    cardImg.src = data.urlToImage
+    card.append(cardImg)
+
+    const cardURL = createElem('a', 'news-card__url', 'Click to continue');
+    cardURL.href = data.url
+    card.append(cardURL)
+}
+
+const changeCategory = () => {
+    const cardsNews = document.querySelectorAll('.news-list__card')
+    cardsNews.forEach(card => {
+        card.remove()
+    })  
+}
+const removeCategoryActive = (btns) => {
+    btns.forEach(btn => {
+        btn.classList.remove('active')
+    })
+}
+
+const chooseCategory = () => {
+    const economicNews = document.querySelector('.economicNews-widget')
+    const categoryBtns = economicNews.querySelectorAll('.news-category__item')
+    categoryBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            changeCategory() 
+            removeCategoryActive(categoryBtns)
+            btn.classList.add('active')
+            getNews(btn.id)
+        })
+    })
+}
+chooseCategory();
 
 const widgetBody = document.querySelector('.widget-body')
 const widgetList = document.querySelectorAll('.menu-finance__item')
@@ -522,3 +676,4 @@ const menuFinance = document.querySelector('.menu-finance');
 btnOpenMenu.addEventListener('click', function() {
     btnOpenMenu.classList.toggle('active-menu')
 })
+

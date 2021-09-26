@@ -1,0 +1,159 @@
+.economicNews-content {
+    .news-category {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+        .news-category__item {
+            padding: 5px 10px;
+            background-color: rgba(184, 194, 191, 0.877);
+            margin-right: 30px;
+            font-size: 16px;
+            border-radius: 10px;
+            width: 80px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            &.active {
+                background-color: rgba(46, 49, 48, 0.877);
+                color: rgb(221, 223, 224);
+            }
+            &:hover {
+                background-color: rgba(87, 114, 105, 0.877);
+            }
+        }
+    }
+}
+.economicNews-content {
+    .news-content {
+        .news-list {
+            display: grid;
+            grid-template-columns: 5fr 2fr;
+            gap: 15px;
+            .news-list__card {
+                display: flex;
+                flex-direction: column;
+                align-content: space-between;
+                background-color: #fff;
+                padding: 15px;
+                border-radius: 5px;
+                &:first-child {
+                    grid-row-start: 1;
+                    grid-row-end: 3;
+                }
+                .news-card__info {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-bottom: 10px;
+                }
+                .news-card__title {
+                    margin-bottom: 10px;
+                    text-decoration: underline;
+                }
+                .news-card__description {
+                    margin-bottom: 5px;
+                    line-height: 1.2;
+                }
+                .news-card__img {
+                    width: 100%;
+                    height: auto;
+                    margin-bottom: 5px;
+                }
+                .news-card__url {
+                   margin-top: auto; 
+                }  
+            }
+        }
+    }
+}
+
+@media(max-width: 900px) {
+    .economicNews-content {
+        .news-content {
+            .news-list {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+                .news-list__card {
+                    &:first-child {
+                        grid-row-start: 1;
+                        grid-row-end: 1;
+                    }
+                }
+            }
+        }
+    }
+    .economicNews-content {
+        .news-category {
+            display: flex;
+            justify-content: center;
+            .news-category__item {
+                padding: 5px;
+                margin-right: 15px;
+                font-size: 14px;
+            }
+        }
+    } 
+}
+@media(max-width: 700px) {
+    .economicNews-content {
+        .news-content {
+            .news-list {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+    }
+    .economicNews-content {
+        .news-category {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-items: center;
+            max-width: 300px;
+            row-gap: 15px;
+            justify-self: center;
+            margin-left: auto;
+            margin-right: auto;
+            .news-category__item {
+                padding: 5px;
+                align-self: center;
+                font-size: 14px;
+            }
+        }
+    } 
+}
+@media(max-width: 360px) {
+    .economicNews-content {
+        .news-content {
+            .news-list {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                .news-list__card {
+                    .news-card__info {
+                        font-size: 12px;
+                    }
+                    .news-card__title {
+                        font-size: 13px;
+                    }
+                    .news-card__description {
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+    .economicNews-content {
+        .news-category {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            justify-items: center;
+            row-gap: 15px;
+            justify-self: center;
+            margin-left: auto;
+            margin-right: auto;
+            .news-category__item {
+                padding: 5px 0;
+                align-self: center;
+                font-size: 13px;
+            }
+        }
+    } 
+}

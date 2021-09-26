@@ -1,4 +1,6 @@
 @@include('currencyRate.js');
+@@include('incomeCalculator.js'); 
+@@include('economicNews.js');
 
 const widgetBody = document.querySelector('.widget-body')
 const widgetList = document.querySelectorAll('.menu-finance__item')
@@ -80,3 +82,4 @@ const menuFinance = document.querySelector('.menu-finance');
 btnOpenMenu.addEventListener('click', function() {
     btnOpenMenu.classList.toggle('active-menu')
 })
+

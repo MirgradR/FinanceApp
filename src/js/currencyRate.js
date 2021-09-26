@@ -2,7 +2,7 @@
 
 const API_KEY = 'c4q8am2ad3icc97rdfcg';
 //let symbols = ['FB', 'AAPL', 'MS', 'JPM', 'JNJ', 'XOM', 'BAC', 'V', 'T', 'INTC', 'PFE', 'BA', 'KO', 'BABA', 'TSLA', 'NFLX', 'WMT', 'NKE', 'EA', 'MSFT']
-let symbols = ['FB', 'AAPL', 'MS', 'AMZN']
+let symbols = ['FB', 'AAPL', 'MS', 'XOM']
 let stocksArr = [];
 let balance = {}
 balance.started = 10000
@@ -372,12 +372,23 @@ const getValueRate = (data) => {
     convertationCalculator()
 }
 
+const setCurrencyRate = () => {
+    const headerCourseFirst = document.querySelector('.ruble')
+    const headerCourseSecond = document.querySelector('.euro')
+
+    const rubleCourse = document.getElementById('RUB')  
+    const euroCourse = document.getElementById('EUR') 
+
+    headerCourseFirst.textContent = 'RUB ' + (Math.floor(rubleCourse.textContent * 100) / 100)
+    headerCourseSecond.textContent = 'EUR ' + (Math.floor(euroCourse.textContent * 100) / 100)     
+}
+
 const getCurrencyRate = (url) => {
     fetch(url)
         .then(resp => resp.json())
         .then(data => {
-            console.log(data.response)
             getValueRate(data.response)
+            setCurrencyRate()
         })    
 }
 getCurrencyRate(currencyRate_URL)
@@ -440,3 +451,24 @@ const convertationCalculator = () => {
         courseResult.textContent = (Math.floor(amount * selectCourse * 10000) / 10000)
     })
 }
+
+// Search stocks
+
+const searchStocks = () => {
+    const searchInput = document.querySelector('.search-stock__input') 
+    const stockCards = document.querySelectorAll('.widget_price-card')
+    searchInput.addEventListener('input', function() {
+        let value = RegExp(searchInput.value.trim(), 'gi')
+        if (value != '') {
+            for(let card of stockCards) {
+                const cardTitle = card.querySelector('.widget_price-title').textContent
+                if (cardTitle.search(value) == -1) {
+                    card.style.display = 'none'
+                } else {
+                    card.style.display = 'flex'
+                }
+            }
+        }
+    })
+}
+searchStocks()

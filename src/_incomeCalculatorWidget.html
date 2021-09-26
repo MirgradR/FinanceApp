@@ -1,4 +1,43 @@
 <div class="incomeCalculator-widget"> <!--active-widget-->
     <h2 class="incomeCalculator-widget__title widget-title">Income Calculator</h2>
-    <p class="incomeCalculator-widget__text widget-text">Count your income</p>
+    <div class="incameCalculator-content">
+        <div class="calculator-input">
+            <div class="section-income">
+                <h3 class="income-title calculator-title">Monthly income after tax deduction</h3>
+                <form class="form-income">
+                    <label for="salary" class="income-label">Salary:</label>
+                    <input type="number" class="income-input" id="salary" placeholder="0">
+                    <label for="freelance" class="income-label">Freelance:</label>
+                    <input type="number" class="income-input" id="freelance" placeholder="0">
+                    <label for="deposits" class="income-label">Deposits:</label>
+                    <input type="number" class="income-input" id="deposits" placeholder="0">
+                    <label for="otherIncome" class="income-label">Other income:</label>
+                    <input type="number" class="income-input" id="otherIncome" placeholder="0">
+                </form>
+            </div>
+            <div class="section-expenses">
+                <h3 class="expenses-title calculator-title">Monthly expenses</h3>
+                <form class="form-expense">
+                    <label for="housing" class="expense-label">For Housing:</label>
+                    <input type="number" class="expense-input" id="housing" placeholder="0">
+                    <label for="food" class="expense-label">Food:</label>
+                    <input type="number" class="expense-input" id="food" placeholder="0">
+                    <label for="credits" class="expense-label">Credits:</label>
+                    <input type="number" class="expense-input" id="credits" placeholder="0">
+                    <label for="transport" class="expense-label">Transport:</label>
+                    <input type="number" class="expense-input" id="transport" placeholder="0">
+                    <label for="entertainment" class="expense-label">Entertainment:</label>
+                    <input type="number" class="expense-input" id="entertainment" placeholder="0">
+                    <label for="otherExpenses" class="expense-label">Other:</label>
+                    <input type="number" class="expense-input" id="otherExpenses" placeholder="0">
+                </form>
+            </div>
+        </div>
+        <div class="calculator-output">
+            <h3 class="result-title calculator-title">Results</h3>
+            <p class="result-income">Income <span id="result-income">0</span></p>
+            <p class="result-expenses">Expenses <span id="result-expenses">0</span></p>
+            <p class="result-remains">Remains <span id="result-remains">0</span></p>
+        </div>
+    </div>
 </div>

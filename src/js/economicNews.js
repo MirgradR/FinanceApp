@@ -6,12 +6,12 @@ const getNews = (category) => {
     .then(data => {
         const dataNews = data.articles
         for (let i = 0; i < 7; i++) {
-            // if (dataNews[i].urlToImage == null) {
-            //     dataNews[i].urlToImage = 'img/category/worldNews.png'
-            // }
-            // if (dataNews[i].description == 'False') {
-            //     i++
-            // }
+            if (dataNews[i].urlToImage == null) {
+                dataNews[i].urlToImage = 'img/category/worldNews.png'
+            }
+            if (dataNews[i].description == 'False') {
+                i++
+            }
             createCardsNews(dataNews[i], category)
         }      
     })
@@ -72,3 +72,13 @@ const chooseCategory = () => {
     })
 }
 chooseCategory()
+
+const api_key_test = 'EbXM4yKB9ua_wBL-6CihPQbg2YAZyOrKRYPxMty9A1U'
+const url_test = 'https://api.newscatcherapi.com/v2/latest_headlines?countries=US&topic=business'
+fetch(url_test, {
+    headers: {
+        'x-api-key': api_key_test
+    }
+}).then(resp => resp.json()).then(data => {
+    console.log(data.articles)
+})

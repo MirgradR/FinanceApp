@@ -1,8 +1,8 @@
 // Stocks
 
 const API_KEY = 'c4q8am2ad3icc97rdfcg';
-//let symbols = ['FB', 'AAPL', 'MS', 'JPM', 'JNJ', 'XOM', 'BAC', 'V', 'T', 'INTC', 'PFE', 'BA', 'KO', 'BABA', 'TSLA', 'NFLX', 'WMT', 'NKE', 'EA', 'MSFT']
-let symbols = ['FB', 'AAPL', 'MS', 'XOM']
+let symbols = ['FB', 'AAPL', 'MS', 'JPM', 'JNJ', 'XOM', 'BAC', 'V', 'T', 'INTC', 'PFE', 'BA', 'KO', 'BABA', 'TSLA', 'NFLX', 'WMT', 'NKE', 'EA', 'MSFT']
+//let symbols = ['FB', 'AAPL', 'MS', 'XOM']
 let stocksArr = [];
 let balance = {}
 balance.started = 10000
@@ -11,7 +11,7 @@ balance.asset = 0
 localStorage.setItem('balance', JSON.stringify(balance))
 
 
-let myPortfolio = []//JSON.parse(localStorage.getItem('Portfolio'))
+let myPortfolio = []
 if (localStorage.Portfolio) {
     myPortfolio = JSON.parse(localStorage.getItem('Portfolio'))
 }
@@ -532,14 +532,14 @@ const getNews = (category) => {
     .then(resp => resp.json())
     .then(data => {
         const dataNews = data.articles
+        console.log(dataNews)
         for (let i = 0; i < 7; i++) {
             if (dataNews[i].media == null) {
                 dataNews[i].media = 'img/category/worldNews.png'
             }
-            // if (dataNews[i].description == 'False') {
-            //     i++
-            // }
-            // console.log(dataNews[i].media)
+            if (dataNews[i].author == null) {
+                i++
+            }
             createCardsNews(dataNews[i], category)
         }      
     })
@@ -555,23 +555,23 @@ const createCardsNews = (data, category) => {
 
     const cardInfo = createElem('div', 'news-card__info');
     card.append(cardInfo)
-    const cardInfoName = createElem('h3', 'news-card__info-name', data.author); //data.source.name
+    const cardInfoName = createElem('h3', 'news-card__info-name', data.author); 
     cardInfo.append(cardInfoName)
     const cardInfoCategory = createElem('h4', 'news-card__info-category', category);
     cardInfo.append(cardInfoCategory)
 
-    const cardTitle = createElem('p', 'news-card__title', data.title); //data.title
+    const cardTitle = createElem('p', 'news-card__title', data.title); 
     card.append(cardTitle)
 
-    const cardDescription = createElem('p', 'news-card__description', data.excerpt); //data.description
+    const cardDescription = createElem('p', 'news-card__description', data.excerpt);
     card.append(cardDescription)
 
     const cardImg = createElem('img', 'news-card__img');
-    cardImg.src = data.media   //data.urlToImage
+    cardImg.src = data.media   
     card.append(cardImg)
 
     const cardURL = createElem('a', 'news-card__url', 'Click to continue');
-    cardURL.href = data.link  //data.url
+    cardURL.href = data.link  
     card.append(cardURL)
 }
 
@@ -600,26 +600,6 @@ const chooseCategory = () => {
     })
 }
 chooseCategory()
-
-
-// const getNews = (category) => {
-//     fetch(`https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${API_KEY_NEWS}`)
-//     .then(resp => resp.json())
-//     .then(data => {
-//         const dataNews = data.articles
-//         for (let i = 0; i < 7; i++) {
-//             if (dataNews[i].urlToImage == null) {
-//                 dataNews[i].urlToImage = 'img/category/worldNews.png'
-//             }
-//             if (dataNews[i].description == 'False') {
-//                 i++
-//             }
-//             createCardsNews(dataNews[i], category)
-//         }      
-//     })
-// }
-//const API_KEY_NEWS = '1de49cf49c8b420c9333bade896baea7'
-
 ;
 
 const widgetBody = document.querySelector('.widget-body')

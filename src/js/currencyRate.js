@@ -1,8 +1,8 @@
 // Stocks
 
 const API_KEY = 'c4q8am2ad3icc97rdfcg';
-//let symbols = ['FB', 'AAPL', 'MS', 'JPM', 'JNJ', 'XOM', 'BAC', 'V', 'T', 'INTC', 'PFE', 'BA', 'KO', 'BABA', 'TSLA', 'NFLX', 'WMT', 'NKE', 'EA', 'MSFT']
-let symbols = ['FB', 'AAPL', 'MS', 'XOM']
+let symbols = ['FB', 'AAPL', 'MS', 'JPM', 'JNJ', 'XOM', 'BAC', 'V', 'T', 'INTC', 'PFE', 'BA', 'KO', 'BABA', 'TSLA', 'NFLX', 'WMT', 'NKE', 'EA', 'MSFT']
+//let symbols = ['FB', 'AAPL', 'MS', 'XOM']
 let stocksArr = [];
 let balance = {}
 balance.started = 10000
@@ -11,7 +11,7 @@ balance.asset = 0
 localStorage.setItem('balance', JSON.stringify(balance))
 
 
-let myPortfolio = []//JSON.parse(localStorage.getItem('Portfolio'))
+let myPortfolio = []
 if (localStorage.Portfolio) {
     myPortfolio = JSON.parse(localStorage.getItem('Portfolio'))
 }

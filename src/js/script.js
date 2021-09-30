@@ -35,6 +35,10 @@ const chooseWidget = (widget, itemList, n) => {
             item.classList.remove('active-item') 
         }
         itemList.classList.add('active-item')
+
+ 
+        
+
     })
 }
 

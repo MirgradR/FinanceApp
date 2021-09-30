@@ -6,11 +6,13 @@ const getNews = (category) => {
             'x-api-key': api_key_test
         }
     })
-    .then(resp => resp.json())
+    .then(resp => {
+        return resp.json()
+    })
     .then(data => {
         const dataNews = data.articles
-        console.log(dataNews)
-        for (let i = 0; i < 7; i++) {
+        const dataMax = 7  
+        for (let i = 0; i < dataMax; i++) {
             if (dataNews[i].media == null) {
                 dataNews[i].media = 'img/category/worldNews.png'
             }
@@ -19,6 +21,8 @@ const getNews = (category) => {
             }
             createCardsNews(dataNews[i], category)
         }      
+    }).catch(err => {
+        console.log(err , '12')
     })
 }
 getNews('business')
@@ -44,7 +48,7 @@ const createCardsNews = (data, category) => {
     card.append(cardDescription)
 
     const cardImg = createElem('img', 'news-card__img');
-    cardImg.src = data.media   
+    cardImg.src = data.media
     card.append(cardImg)
 
     const cardURL = createElem('a', 'news-card__url', 'Click to continue');

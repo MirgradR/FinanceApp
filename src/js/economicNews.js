@@ -11,16 +11,18 @@ const getNews = (category) => {
     })
     .then(data => {
         const dataNews = data.articles
-        const dataMax = 7  
+        let dataMax = 7  
         for (let i = 0; i < dataMax; i++) {
             if (dataNews[i].media == null) {
                 dataNews[i].media = 'img/category/worldNews.png'
             }
             if (dataNews[i].author == null) {
+                dataMax++
                 i++
             }
             createCardsNews(dataNews[i], category)
-        }      
+            document.querySelector('.news-card__img:last-of-type').onerror = () => dataNews[i].media = 'img/category/worldNews.png' 
+        }     
     }).catch(err => {
         console.log(err , '12')
     })

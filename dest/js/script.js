@@ -567,6 +567,9 @@ const getNews = (category) => {
     .then(data => {
         const dataNews = data.articles
         let dataMax = 7  
+        if (data.status === "error") {
+            document.querySelector('.economicNews-widget').append(createElem('div', 'news-card__info', 'Sorry :(  ' + data.message))
+        }
         for (let i = 0; i < dataMax; i++) {
             if (dataNews[i].media == null) {
                 dataNews[i].media = 'img/category/worldNews.png'
@@ -575,14 +578,10 @@ const getNews = (category) => {
                 dataMax++
                 i++
             }
-            
+
             createCardsNews(dataNews[i], category)
-            document.querySelector('.news-card__img:last-of-type').onerror = () => dataNews[i].media = 'img/category/worldNews.png'
-            
-        }
-              
-    }).catch(err => {
-        console.log(err , '12')
+            document.querySelector('.news-card__img:last-of-type').onerror = () => dataNews[i].media = 'img/category/worldNews.png' 
+        }     
     })
 }
 getNews('business')
